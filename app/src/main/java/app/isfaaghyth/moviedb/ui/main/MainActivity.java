@@ -18,6 +18,7 @@ import app.isfaaghyth.moviedb.R;
 import app.isfaaghyth.moviedb.base.BaseActivity;
 import app.isfaaghyth.moviedb.data.Movie;
 import app.isfaaghyth.moviedb.data.MovieRepository;
+import app.isfaaghyth.moviedb.utils.Consts;
 import butterknife.BindView;
 import de.mateware.snacky.Snacky;
 import io.isfaaghyth.rak.Rak;
@@ -31,17 +32,13 @@ public class MainActivity extends BaseActivity implements MainView<MovieReposito
     private MainRequest request;
     private MainAdapter adapter;
 
-    private static final String POPULAR = "popular"; //default
-    private static final String NOW_PLAYING = "now_playing";
-    private static final String UPCOMING = "upcoming";
-
     @Override public int contentView() {
         return R.layout.activity_main;
     }
 
     @Override public void onCreated() {
         request = new MainRequest(this);
-        request.popularMovies(POPULAR);
+        request.popularMovies(Consts.POPULAR); //default
 
         swipeRefresh.setOnRefreshListener(this);
 
@@ -72,19 +69,16 @@ public class MainActivity extends BaseActivity implements MainView<MovieReposito
     @Override public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.mn_popular:
-                request.popularMovies(POPULAR);
-                Rak.entry("mode", POPULAR);
+                request.popularMovies(Consts.POPULAR);
                 break;
             case R.id.mn_upcoming:
-                request.popularMovies(UPCOMING);
-                Rak.entry("mode", UPCOMING);
+                request.popularMovies(Consts.UPCOMING);
                 break;
             case R.id.mn_now_showing:
-                request.popularMovies(NOW_PLAYING);
-                Rak.entry("mode", NOW_PLAYING);
+                request.popularMovies(Consts.NOW_PLAYING);
                 break;
             default:
-                request.popularMovies(POPULAR);
+                request.popularMovies(Consts.POPULAR);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -110,7 +104,7 @@ public class MainActivity extends BaseActivity implements MainView<MovieReposito
     }
 
     @Override public void onRefresh() {
-        request.popularMovies(POPULAR);
+        request.popularMovies(Consts.POPULAR);
         swipeRefresh.setRefreshing(true);
     }
 }
