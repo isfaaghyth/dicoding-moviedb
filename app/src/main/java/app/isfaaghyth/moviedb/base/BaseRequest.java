@@ -10,10 +10,10 @@ import app.isfaaghyth.moviedb.network.Routes;
 
 public class BaseRequest {
 
-    protected Routes network;
+    protected Routes request;
 
     protected void initialize() {
-        network = Network.builder().create(Routes.class);
+        request = Network.builder().create(Routes.class);
     }
 
 }

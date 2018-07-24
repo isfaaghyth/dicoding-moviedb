@@ -11,7 +11,8 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "MAIN_URL", "\"http://www.themoviedb.org/\"")
+        buildConfigField("String", "MAIN_URL", "\"http://www.themoviedb.org/3/\"")
+        buildConfigField("String", "API_KEY", "\"9351b653885866a95fcef04c4f0c7426\"")
         buildConfigField("String", "IMG_URL", "\"http://image.tmdb.org/\"")
     }
     buildTypes {
