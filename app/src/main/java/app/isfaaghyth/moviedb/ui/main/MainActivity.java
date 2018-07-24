@@ -82,10 +82,14 @@ public class MainActivity extends BaseActivity implements MainView<MovieReposito
     }
 
     @Override public void onSuccess(MovieRepository result) {
-        swipeRefresh.setRefreshing(false);
-        movies.clear();
-        movies.addAll(result.getResults());
-        adapter.notifyDataSetChanged();
+        if (result.getResults().size() > 0) {
+            swipeRefresh.setRefreshing(false);
+            movies.clear();
+            movies.addAll(result.getResults());
+            adapter.notifyDataSetChanged();
+        } else {
+            onInfo("Tidak ada movie.");
+        }
     }
 
     @Override public void onError(String message) {
