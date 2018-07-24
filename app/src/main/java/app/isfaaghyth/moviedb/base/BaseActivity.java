@@ -34,7 +34,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .setActivity(this)
                 .setText(message)
                 .setDuration(Snacky.LENGTH_SHORT)
-                .success()
+                .error()
                 .show();
     }
 

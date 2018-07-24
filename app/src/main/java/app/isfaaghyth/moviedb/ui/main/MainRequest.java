@@ -25,13 +25,13 @@ public class MainRequest extends BaseRequest {
 
     void popularMovies() {
         request.getPopularMovies(BuildConfig.API_KEY).enqueue(new Callback<MovieRepository>() {
-            @Override public void onResponse(Call<MovieRepository> call, Response<MovieRepository> response) {
+            @Override public void onResponse(@NonNull Call<MovieRepository> call, @NonNull Response<MovieRepository> response) {
                 if (response.isSuccessful()) {
                     view.onSuccess(response.body());
                 }
             }
 
-            @Override public void onFailure(Call<MovieRepository> call, Throwable t) {
+            @Override public void onFailure(@NonNull Call<MovieRepository> call, @NonNull Throwable t) {
                 view.onError(t.getMessage());
             }
         });
