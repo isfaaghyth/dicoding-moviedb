@@ -12,6 +12,7 @@ import java.util.List;
 public class Movie {
     private int id;
     private float vote_average;
+    private int vote_count;
     private String title;
     private String poster_path;
     private List<Integer> genre_ids;
@@ -25,6 +26,10 @@ public class Movie {
 
     public float getVote_average() {
         return vote_average;
+    }
+
+    public int getVote_count() {
+        return vote_count;
     }
 
     public String getTitle() {

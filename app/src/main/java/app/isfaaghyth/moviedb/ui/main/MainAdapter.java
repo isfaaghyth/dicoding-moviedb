@@ -13,6 +13,7 @@ import java.util.List;
 
 import app.isfaaghyth.moviedb.R;
 import app.isfaaghyth.moviedb.data.Movie;
+import app.isfaaghyth.moviedb.utils.Consts;
 
 /**
  * Created by isfaaghyth on 7/25/18.
@@ -33,7 +34,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
 
     @Override public void onBindViewHolder(MainHolder holder, int position) {
         Glide.with(holder.imgBanner.getContext())
-                .load(movies.get(position).getBackdrop_path())
+                .load(Consts.loadMovieBanner(movies.get(position).getBackdrop_path()))
                 .into(holder.imgBanner);
         holder.txtMovieName.setText(movies.get(position).getTitle());
     }

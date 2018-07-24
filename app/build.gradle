@@ -13,7 +13,7 @@ android {
 
         buildConfigField("String", "MAIN_URL", "\"http://api.themoviedb.org/3/\"")
         buildConfigField("String", "API_KEY", "\"9351b653885866a95fcef04c4f0c7426\"")
-        buildConfigField("String", "IMG_URL", "\"http://image.tmdb.org/\"")
+        buildConfigField("String", "IMG_URL", "\"http://image.tmdb.org/t/p/w185/\"")
     }
     buildTypes {
         release {
