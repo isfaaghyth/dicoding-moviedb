@@ -8,5 +8,5 @@ import app.isfaaghyth.moviedb.base.RequestListener;
  */
 
 public interface MainView<M> extends RequestListener<M> {
-
+    //if needed
 }

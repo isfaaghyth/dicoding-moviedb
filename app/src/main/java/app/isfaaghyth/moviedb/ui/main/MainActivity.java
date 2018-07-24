@@ -2,10 +2,9 @@ package app.isfaaghyth.moviedb.ui.main;
 
 import app.isfaaghyth.moviedb.R;
 import app.isfaaghyth.moviedb.base.BaseActivity;
-import app.isfaaghyth.moviedb.base.RequestListener;
-import app.isfaaghyth.moviedb.data.Data;
+import app.isfaaghyth.moviedb.data.MovieRepository;
 
-public class MainActivity extends BaseActivity implements MainView<Data> {
+public class MainActivity extends BaseActivity implements MainView<MovieRepository> {
 
     private MainRequest request;
 
@@ -17,7 +16,7 @@ public class MainActivity extends BaseActivity implements MainView<Data> {
         request = new MainRequest(this);
     }
 
-    @Override public void onSuccess(Data result) {
+    @Override public void onSuccess(MovieRepository result) {
 
     }
 
