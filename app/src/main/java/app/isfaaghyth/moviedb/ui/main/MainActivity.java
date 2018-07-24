@@ -4,6 +4,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +35,12 @@ public class MainActivity extends BaseActivity implements MainView<MovieReposito
         lstMovies.setLayoutManager(new GridLayoutManager(this, 2));
         adapter = new MainAdapter(movies);
         lstMovies.setAdapter(adapter);
+    }
+
+    @Override public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_movie_filter, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override public void onSuccess(MovieRepository result) {
