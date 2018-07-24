@@ -17,7 +17,7 @@ public interface Routes {
     @GET("movie/popular")
     Call<MovieRepository> getPopularMovies(@Query("api_key") String apiKey);
 
-    @GET("movie/{movie_id}")
+    @GET("movie/{movie_id}/videos")
     Call<MovieTrailerRepository> getTrailerMovie(
             @Path("movie_id") String movieId,
             @Query("api_key") String apiKey);

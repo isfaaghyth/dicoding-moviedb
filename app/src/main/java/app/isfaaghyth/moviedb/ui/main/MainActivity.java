@@ -1,5 +1,6 @@
 package app.isfaaghyth.moviedb.ui.main;
 
+import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -52,4 +53,7 @@ public class MainActivity extends BaseActivity implements MainView<MovieReposito
         super.onError(message);
     }
 
+    @Override public Context context() {
+        return MainActivity.this;
+    }
 }

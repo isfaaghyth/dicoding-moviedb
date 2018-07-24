@@ -1,5 +1,7 @@
 package app.isfaaghyth.moviedb.ui.main;
 
+import android.content.Context;
+
 import app.isfaaghyth.moviedb.base.RequestListener;
 
 /**
@@ -8,5 +10,5 @@ import app.isfaaghyth.moviedb.base.RequestListener;
  */
 
 public interface MainView<M> extends RequestListener<M> {
-    //if needed
+    Context context();
 }

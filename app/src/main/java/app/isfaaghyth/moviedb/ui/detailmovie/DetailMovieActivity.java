@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import app.isfaaghyth.moviedb.R;
 import app.isfaaghyth.moviedb.base.BaseActivity;
 import app.isfaaghyth.moviedb.data.Movie;
+import app.isfaaghyth.moviedb.data.MovieTrailer;
 import app.isfaaghyth.moviedb.data.MovieTrailerRepository;
 import app.isfaaghyth.moviedb.utils.Consts;
 import butterknife.BindView;
@@ -82,11 +83,13 @@ public class DetailMovieActivity extends BaseActivity implements DetailMovieView
     }
 
     @Override public Context context() {
-        return getApplicationContext();
+        return DetailMovieActivity.this;
     }
 
     @Override public void onSuccess(MovieTrailerRepository result) {
-        Toast.makeText(this, result.getResults().get(0).getKey(), Toast.LENGTH_LONG).show();
+        for (MovieTrailer mt : result.getResults()) {
+            Log.d("TAG", mt.getId());
+        }
     }
 
     @Override public void onError(String message) {

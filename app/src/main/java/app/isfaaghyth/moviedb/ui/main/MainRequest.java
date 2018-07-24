@@ -21,6 +21,7 @@ public class MainRequest extends BaseRequest {
     MainRequest(MainView view) {
         this.view = view;
         initialize();
+        initProgress(view.context());
     }
 
     void popularMovies() {
