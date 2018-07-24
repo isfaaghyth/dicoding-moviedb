@@ -1,6 +1,7 @@
 package app.isfaaghyth.moviedb.ui.main;
 
 import android.content.Context;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,20 +19,24 @@ import app.isfaaghyth.moviedb.data.MovieRepository;
 import butterknife.BindView;
 import de.mateware.snacky.Snacky;
 
-public class MainActivity extends BaseActivity implements MainView<MovieRepository> {
-
-    private List<Movie> movies = new ArrayList<>();
-    private MainAdapter adapter;
+public class MainActivity extends BaseActivity implements MainView<MovieRepository>, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.lst_movies) RecyclerView lstMovies;
+    @BindView(R.id.swipe_refresh_main) SwipeRefreshLayout swipeRefresh;
+
+    private List<Movie> movies = new ArrayList<>();
+    private MainRequest request;
+    private MainAdapter adapter;
 
     @Override public int contentView() {
         return R.layout.activity_main;
     }
 
     @Override public void onCreated() {
-        MainRequest request = new MainRequest(this);
+        request = new MainRequest(this);
         request.popularMovies();
+
+        swipeRefresh.setOnRefreshListener(this);
 
         lstMovies.setLayoutManager(new GridLayoutManager(this, 2));
         adapter = new MainAdapter(movies);
@@ -45,15 +50,23 @@ public class MainActivity extends BaseActivity implements MainView<MovieReposito
     }
 
     @Override public void onSuccess(MovieRepository result) {
+        swipeRefresh.setRefreshing(false);
+        movies.clear();
         movies.addAll(result.getResults());
         adapter.notifyDataSetChanged();
     }
 
     @Override public void onError(String message) {
+        swipeRefresh.setRefreshing(false);
         super.onError(message);
     }
 
     @Override public Context context() {
         return MainActivity.this;
+    }
+
+    @Override public void onRefresh() {
+        request.popularMovies();
+        swipeRefresh.setRefreshing(true);
     }
 }
