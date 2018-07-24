@@ -1,6 +1,10 @@
 package app.isfaaghyth.moviedb.ui.detailmovie;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,6 +20,7 @@ import app.isfaaghyth.moviedb.data.Movie;
 import app.isfaaghyth.moviedb.data.MovieTrailer;
 import app.isfaaghyth.moviedb.data.MovieTrailerRepository;
 import app.isfaaghyth.moviedb.utils.Consts;
+import app.isfaaghyth.moviedb.utils.ShareIntentUtil;
 import butterknife.BindView;
 
 /**
@@ -77,7 +82,10 @@ public class DetailMovieActivity extends BaseActivity implements DetailMovieView
     private void onShareMovie() {
         findViewById(R.id.btn_share).setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
-
+                ShareIntentUtil.shareMovie(v.getContext(),
+                        movie.getTitle(),
+                        String.valueOf(movie.getVote_average()),
+                        movie.getOverview());
             }
         });
     }
@@ -87,9 +95,9 @@ public class DetailMovieActivity extends BaseActivity implements DetailMovieView
     }
 
     @Override public void onSuccess(MovieTrailerRepository result) {
-        for (MovieTrailer mt : result.getResults()) {
-            Log.d("TAG", mt.getId());
-        }
+        String key = result.getResults().get(0).getKey();
+        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://youtube.com/watch?v=" + key));
+        getApplicationContext().startActivity(i);
     }
 
     @Override public void onError(String message) {
