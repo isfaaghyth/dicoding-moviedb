@@ -6,5 +6,6 @@
     <string name="upcoming">Upcoming</string>
     <string name="now_showing">Now Showing</string>
     <string name="card_content">Content</string>
+    <string name="waiting">Please Wait...</string>
 
 </resources>

@@ -1,5 +1,7 @@
 package app.isfaaghyth.moviedb.ui.detailmovie;
 
+import android.content.Context;
+
 import app.isfaaghyth.moviedb.base.RequestListener;
 
 /**
@@ -7,6 +9,6 @@ import app.isfaaghyth.moviedb.base.RequestListener;
  * github: @isfaaghyth
  */
 
-public interface DetailMovieView extends RequestListener {
-
+public interface DetailMovieView<M> extends RequestListener<M> {
+    Context context();
 }

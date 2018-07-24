@@ -24,14 +24,17 @@ public class MainRequest extends BaseRequest {
     }
 
     void popularMovies() {
-        request.getPopularMovies(BuildConfig.API_KEY).enqueue(new Callback<MovieRepository>() {
+        getLoader().show();
+        getRequest().getPopularMovies(BuildConfig.API_KEY).enqueue(new Callback<MovieRepository>() {
             @Override public void onResponse(@NonNull Call<MovieRepository> call, @NonNull Response<MovieRepository> response) {
                 if (response.isSuccessful()) {
+                    getLoader().hide();
                     view.onSuccess(response.body());
                 }
             }
 
             @Override public void onFailure(@NonNull Call<MovieRepository> call, @NonNull Throwable t) {
+                getLoader().hide();
                 view.onError(t.getMessage());
             }
         });
