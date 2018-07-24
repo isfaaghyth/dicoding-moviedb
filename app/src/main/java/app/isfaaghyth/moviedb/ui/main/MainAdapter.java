@@ -37,6 +37,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
                 .load(Consts.loadMovieBanner(movies.get(position).getBackdrop_path()))
                 .into(holder.imgBanner);
         holder.txtMovieName.setText(movies.get(position).getTitle());
+        holder.txtYear.setText(movies.get(position).getRelease_date().split("-")[0]);
     }
 
     @Override public int getItemCount() {
@@ -46,12 +47,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
     class MainHolder extends RecyclerView.ViewHolder {
 
         ImageView imgBanner;
-        TextView txtMovieName;
+        TextView txtMovieName, txtYear;
 
         MainHolder(View itemView) {
             super(itemView);
             imgBanner = itemView.findViewById(R.id.img_banner);
             txtMovieName= itemView.findViewById(R.id.txt_movie_name);
+            txtYear = itemView.findViewById(R.id.txt_year);
         }
     }
 

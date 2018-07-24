@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Movie DB</string>
+    <string name="app_name">\@themoviedb.org</string>
     <string name="card_title">Movie Name</string>
 
     <string name="popular">Popular</string>
