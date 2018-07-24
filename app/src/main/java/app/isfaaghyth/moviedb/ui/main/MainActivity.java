@@ -5,9 +5,11 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +36,7 @@ public class MainActivity extends BaseActivity implements MainView<MovieReposito
 
     @Override public void onCreated() {
         request = new MainRequest(this);
-        request.popularMovies();
+        request.popularMovies("popular");
 
         swipeRefresh.setOnRefreshListener(this);
 
@@ -46,7 +48,37 @@ public class MainActivity extends BaseActivity implements MainView<MovieReposito
     @Override public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_movie_filter, menu);
+
+        SearchView searchMovieView = (SearchView) menu.findItem(R.id.mn_search).getActionView();
+        searchMovieView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override public boolean onQueryTextSubmit(String query) {
+                request.searchMovieByKeyword(query);
+                return false;
+            }
+
+            @Override public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.mn_popular:
+                request.popularMovies("popular");
+                break;
+            case R.id.mn_upcoming:
+                request.popularMovies("upcoming");
+                break;
+            case R.id.mn_now_showing:
+                request.popularMovies("now_playing");
+                break;
+            default:
+                request.popularMovies("popular");
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override public void onSuccess(MovieRepository result) {
@@ -66,7 +98,7 @@ public class MainActivity extends BaseActivity implements MainView<MovieReposito
     }
 
     @Override public void onRefresh() {
-        request.popularMovies();
+        request.popularMovies("popular");
         swipeRefresh.setRefreshing(true);
     }
 }

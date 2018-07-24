@@ -24,9 +24,26 @@ public class MainRequest extends BaseRequest {
         initProgress(view.context());
     }
 
-    void popularMovies() {
+    void popularMovies(String filtering) {
         getLoader().show();
-        getRequest().getPopularMovies(BuildConfig.API_KEY).enqueue(new Callback<MovieRepository>() {
+        getRequest().getPopularMovies(filtering, BuildConfig.API_KEY).enqueue(new Callback<MovieRepository>() {
+            @Override public void onResponse(@NonNull Call<MovieRepository> call, @NonNull Response<MovieRepository> response) {
+                if (response.isSuccessful()) {
+                    getLoader().hide();
+                    view.onSuccess(response.body());
+                }
+            }
+
+            @Override public void onFailure(@NonNull Call<MovieRepository> call, @NonNull Throwable t) {
+                getLoader().hide();
+                view.onError(t.getMessage());
+            }
+        });
+    }
+
+    void searchMovieByKeyword(String keyword) {
+        getLoader().show();
+        getRequest().getMovieByQuery(keyword, BuildConfig.API_KEY).enqueue(new Callback<MovieRepository>() {
             @Override public void onResponse(@NonNull Call<MovieRepository> call, @NonNull Response<MovieRepository> response) {
                 if (response.isSuccessful()) {
                     getLoader().hide();

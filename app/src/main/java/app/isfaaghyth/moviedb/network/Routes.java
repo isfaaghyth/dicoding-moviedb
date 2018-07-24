@@ -14,13 +14,19 @@ import retrofit2.http.Query;
 
 public interface Routes {
 
-    @GET("movie/popular")
-    Call<MovieRepository> getPopularMovies(@Query("api_key") String apiKey);
+    @GET("movie/{filtering}")
+    Call<MovieRepository> getPopularMovies(
+            @Path("filtering") String filtering,
+            @Query("api_key") String apiKey);
 
     @GET("movie/{movie_id}/videos")
     Call<MovieTrailerRepository> getTrailerMovie(
             @Path("movie_id") String movieId,
             @Query("api_key") String apiKey);
 
+    @GET("search/movie")
+    Call<MovieRepository> getMovieByQuery(
+            @Query("query") String keyword,
+            @Query("api_key") String apiKey);
 
 }
