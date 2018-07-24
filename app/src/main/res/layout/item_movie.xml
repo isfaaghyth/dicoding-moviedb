@@ -3,11 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:weightSum="1"
-    android:id="@+id/cardLayout">
+    android:weightSum="1">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/user_layout"
+        android:id="@+id/card_movie"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:clickable="true"
@@ -20,7 +19,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/img_banner"
+                android:id="@+id/img_poster"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@mipmap/ic_launcher"
@@ -41,6 +40,7 @@
 
                 <TextView
                     android:id="@+id/txt_movie_name"
+                    fontPath="fonts/cc-bold.ttf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/card_title"

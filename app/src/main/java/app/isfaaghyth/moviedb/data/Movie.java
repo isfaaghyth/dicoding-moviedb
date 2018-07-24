@@ -19,6 +19,7 @@ public class Movie {
     private String backdrop_path;
     private String overview;
     private String release_date;
+    private float popularity;
 
     public int getId() {
         return id;
@@ -30,6 +31,10 @@ public class Movie {
 
     public int getVote_count() {
         return vote_count;
+    }
+
+    public float getPopularity() {
+        return popularity;
     }
 
     public String getTitle() {
