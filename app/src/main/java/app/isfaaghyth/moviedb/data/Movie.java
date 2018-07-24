@@ -1,5 +1,7 @@
 package app.isfaaghyth.moviedb.data;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
 /**
@@ -47,5 +49,9 @@ public class Movie {
 
     public String getRelease_date() {
         return release_date;
+    }
+
+    public String parcelMovie(Movie movie) {
+        return new Gson().toJson(movie);
     }
 }

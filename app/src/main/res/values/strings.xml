@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Movie DB</string>
+    <string name="card_title">Movie Name</string>
+    <string name="card_content">Movie Excerpt</string>
+    <string name="action_share">Share</string>
+    <string name="action_explore">Detail</string>
 </resources>
