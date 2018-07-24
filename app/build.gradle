@@ -43,22 +43,12 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:4.5.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
 
-    //reactive
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-
     //network
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.9.1'
 
     //converter
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
-
-    //storage
-    compile 'com.github.isfaaghyth:Rak:1.0.0'
-
-    //permission
-    compile 'com.karumi:dexter:4.2.0'
 
     //calligraphy
     compile 'uk.co.chrisjenx:calligraphy:2.3.0'
