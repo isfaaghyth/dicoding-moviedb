@@ -2,6 +2,7 @@ package app.isfaaghyth.moviedb.ui.main;
 
 import android.support.annotation.NonNull;
 
+import app.isfaaghyth.moviedb.BuildConfig;
 import app.isfaaghyth.moviedb.base.BaseRequest;
 import app.isfaaghyth.moviedb.data.MovieRepository;
 import retrofit2.Call;
@@ -23,14 +24,14 @@ public class MainRequest extends BaseRequest {
     }
 
     void popularMovies() {
-        request.getPopularMovies("").enqueue(new Callback<MovieRepository>() {
-            @Override public void onResponse(@NonNull Call<MovieRepository> call, @NonNull Response<MovieRepository> response) {
+        request.getPopularMovies(BuildConfig.API_KEY).enqueue(new Callback<MovieRepository>() {
+            @Override public void onResponse(Call<MovieRepository> call, Response<MovieRepository> response) {
                 if (response.isSuccessful()) {
                     view.onSuccess(response.body());
                 }
             }
 
-            @Override public void onFailure(@NonNull Call<MovieRepository> call, @NonNull Throwable t) {
+            @Override public void onFailure(Call<MovieRepository> call, Throwable t) {
                 view.onError(t.getMessage());
             }
         });
