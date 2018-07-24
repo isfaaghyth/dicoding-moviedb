@@ -61,7 +61,7 @@ public class Movie {
         return release_date;
     }
 
-    public String parcelMovie(Movie movie) {
-        return new Gson().toJson(movie);
+    public String parcelMovie() {
+        return new Gson().toJson(this);
     }
 }

@@ -1,5 +1,6 @@
 package app.isfaaghyth.moviedb.ui.main;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -37,22 +38,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
     }
 
     @Override public void onBindViewHolder(MainHolder holder, final int position) {
-        Glide.with(holder.imgPoster.getContext())
-                .load(Consts.loadMovieBanner(movies.get(position).getPoster_path()))
-                .apply(new RequestOptions()
-                            .placeholder(R.drawable.img_placeholder)
-                            .centerCrop())
-                .into(holder.imgPoster);
-        holder.txtMovieName.setText(movies.get(position).getTitle());
-        holder.txtYear.setText(movies.get(position).getRelease_date().split("-")[0]);
-
-        holder.cardMovie.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                Intent detail = new Intent(v.getContext(), DetailMovieActivity.class);
-                detail.putExtra("movie", movies.get(position).parcelMovie(movies.get(position)));
-                v.getContext().startActivity(detail);
-            }
-        });
+        holder.setData(movies.get(position));
     }
 
     @Override public int getItemCount() {
@@ -61,9 +47,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
 
     class MainHolder extends RecyclerView.ViewHolder {
 
-        CardView cardMovie;
-        ImageView imgPoster;
-        TextView txtMovieName, txtYear;
+        private CardView cardMovie;
+        private ImageView imgPoster;
+        private TextView txtMovieName, txtYear;
 
         MainHolder(View itemView) {
             super(itemView);
@@ -71,6 +57,25 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
             imgPoster = itemView.findViewById(R.id.img_poster);
             txtMovieName= itemView.findViewById(R.id.txt_movie_name);
             txtYear = itemView.findViewById(R.id.txt_year);
+        }
+
+        void setData(final Movie movie) {
+            Glide.with(imgPoster.getContext())
+                    .load(Consts.loadMovieBanner(movie.getPoster_path()))
+                    .apply(new RequestOptions()
+                            .placeholder(R.drawable.img_placeholder)
+                            .centerCrop())
+                    .into(imgPoster);
+            txtMovieName.setText(movie.getTitle());
+            txtYear.setText(movie.getRelease_date().split("-")[0]);
+
+            cardMovie.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    Intent detail = new Intent(v.getContext(), DetailMovieActivity.class);
+                    detail.putExtra("movie", movie.parcelMovie());
+                    v.getContext().startActivity(detail);
+                }
+            });
         }
     }
 

@@ -26,8 +26,10 @@ public class MainRequest extends BaseRequest {
 
     void popularMovies(String filtering) {
         getLoader().show();
-        getRequest().getPopularMovies(filtering, BuildConfig.API_KEY).enqueue(new Callback<MovieRepository>() {
-            @Override public void onResponse(@NonNull Call<MovieRepository> call, @NonNull Response<MovieRepository> response) {
+        getRequest().getPopularMovies(filtering, BuildConfig.API_KEY)
+                .enqueue(new Callback<MovieRepository>() {
+            @Override public void onResponse(@NonNull Call<MovieRepository> call,
+                                             @NonNull Response<MovieRepository> response) {
                 if (response.isSuccessful()) {
                     getLoader().hide();
                     view.onSuccess(response.body());
@@ -43,8 +45,10 @@ public class MainRequest extends BaseRequest {
 
     void searchMovieByKeyword(String keyword) {
         getLoader().show();
-        getRequest().getMovieByQuery(keyword, BuildConfig.API_KEY).enqueue(new Callback<MovieRepository>() {
-            @Override public void onResponse(@NonNull Call<MovieRepository> call, @NonNull Response<MovieRepository> response) {
+        getRequest().getMovieByQuery(keyword, BuildConfig.API_KEY)
+                .enqueue(new Callback<MovieRepository>() {
+            @Override public void onResponse(@NonNull Call<MovieRepository> call,
+                                             @NonNull Response<MovieRepository> response) {
                 if (response.isSuccessful()) {
                     getLoader().hide();
                     view.onSuccess(response.body());

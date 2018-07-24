@@ -48,8 +48,8 @@
                     android:textStyle="bold"
                     android:gravity="center_vertical"
                     android:textColor="#ffffff"
-                    android:paddingStart="13dp"
-                    android:paddingEnd="13dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
                     android:paddingBottom="6dp"/>
 
                 <TextView
@@ -59,10 +59,10 @@
                     android:text="@string/card_title"
                     android:textSize="12sp"
                     android:gravity="center_vertical"
-                    android:textColor="@android:color/darker_gray"
-                    android:paddingStart="13dp"
-                    android:paddingEnd="13dp"
-                    android:paddingBottom="13dp"/>
+                    android:textColor="@color/colorAccent"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="20dp"/>
 
             </LinearLayout>
 

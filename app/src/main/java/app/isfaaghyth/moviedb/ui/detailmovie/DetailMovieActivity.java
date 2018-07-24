@@ -53,6 +53,10 @@ public class DetailMovieActivity extends BaseActivity implements DetailMovieView
 
     private void loadMovieDetail(String result) {
         movie = new Gson().fromJson(result, Movie.class);
+
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setTitle(movie.getTitle());
+
         Glide.with(this)
                 .load(Consts.loadMovieBanner(movie.getBackdrop_path()))
                 .into(imgBanner);
