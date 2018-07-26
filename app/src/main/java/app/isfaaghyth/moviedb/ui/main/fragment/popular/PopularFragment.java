@@ -44,11 +44,6 @@ public class PopularFragment extends BaseFragment implements PopularView {
         movies.clear();
         movies.addAll(result.getResults());
         adapter.notifyDataSetChanged();
-
-        //test
-        for (Movie movie: result.getResults()) {
-            Log.d("TAG", movie.getTitle());
-        }
     }
 
     @Override public void onError(String message) {

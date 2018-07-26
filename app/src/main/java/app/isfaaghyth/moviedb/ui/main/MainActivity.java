@@ -9,7 +9,9 @@ import android.view.MenuInflater;
 import app.isfaaghyth.moviedb.R;
 import app.isfaaghyth.moviedb.adapter.ViewPagerAdapter;
 import app.isfaaghyth.moviedb.base.BaseActivity;
+import app.isfaaghyth.moviedb.ui.main.fragment.nowplaying.NowPlayingFragment;
 import app.isfaaghyth.moviedb.ui.main.fragment.popular.PopularFragment;
+import app.isfaaghyth.moviedb.ui.main.fragment.upcoming.UpcomingFragment;
 import app.isfaaghyth.moviedb.utils.CustomViewPager;
 import butterknife.BindView;
 
@@ -26,7 +28,7 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override public void onCreated() {
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerMain.setPagingEnabled(false);
+        viewPagerMain.setPagingEnabled(true);
         viewPagerMain.setOffscreenPageLimit(4);
         setupViewPager(viewPagerMain);
         tabMain.setupWithViewPager(viewPagerMain);
@@ -53,6 +55,8 @@ public class MainActivity extends BaseActivity implements MainView {
 
     void setupViewPager(ViewPager viewPager) {
         adapter.addFragment(new PopularFragment(), getString(R.string.popular));
+        adapter.addFragment(new NowPlayingFragment(), getString(R.string.now_playing));
+        adapter.addFragment(new UpcomingFragment(), getString(R.string.upcoming));
         viewPager.setAdapter(adapter);
     }
 
