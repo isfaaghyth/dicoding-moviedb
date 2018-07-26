@@ -48,7 +48,7 @@ public class PopularFragment extends BaseFragment implements PopularView {
     }
 
     @Override public void onSuccess(MovieRepository result) {
-        swipeRefresh.setRefreshing(true);
+        swipeRefresh.setRefreshing(false);
         movies.clear();
         movies.addAll(result.getResults());
         adapter.notifyDataSetChanged();

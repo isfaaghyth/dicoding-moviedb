@@ -3,7 +3,6 @@ package app.isfaaghyth.moviedb.ui.main.fragment.upcoming;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -48,7 +47,7 @@ public class UpcomingFragment extends BaseFragment implements UpcomingView {
     }
 
     @Override public void onSuccess(MovieRepository result) {
-        swipeRefresh.setRefreshing(true);
+        swipeRefresh.setRefreshing(false);
         movies.clear();
         movies.addAll(result.getResults());
         adapter.notifyDataSetChanged();
