@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import app.isfaaghyth.moviedb.utils.ProgressLoader;
 import butterknife.ButterKnife;
 import de.mateware.snacky.Snacky;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -15,16 +16,20 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * github: @isfaaghyth
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements BaseView {
 
     public abstract int contentView();
     public abstract void onCreated();
+
+    private ProgressLoader loader;
 
     @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(contentView());
         ButterKnife.bind(this);
         onCreated();
+
+        loader = new ProgressLoader(this);
     }
 
     @Override protected void attachBaseContext(Context newBase) {
@@ -39,6 +44,14 @@ public abstract class BaseActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override public void showLoader() {
+        loader.show();
+    }
+
+    @Override public void hideLoader() {
+        loader.hide();
     }
 
     protected String intentValue(String key) {

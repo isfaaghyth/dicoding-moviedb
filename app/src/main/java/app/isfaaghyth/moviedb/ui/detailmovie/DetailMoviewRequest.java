@@ -14,28 +14,27 @@ import retrofit2.Response;
  * github: @isfaaghyth
  */
 
-public class DetailMoviewRequest extends BaseRequest {
+class DetailMoviewRequest extends BaseRequest {
 
     private DetailMovieView view;
 
-    public DetailMoviewRequest(DetailMovieView view) {
+    DetailMoviewRequest(DetailMovieView view) {
         this.view = view;
         initialize();
-        initProgress(view.context());
     }
 
     void movieTrailer(int movieId) {
-        getLoader().show();
+        view.showLoader();
         getRequest().getTrailerMovie(String.valueOf(movieId), BuildConfig.API_KEY).enqueue(new Callback<MovieTrailerRepository>() {
             @Override public void onResponse(@NonNull Call<MovieTrailerRepository> call, @NonNull Response<MovieTrailerRepository> response) {
                 if (response.isSuccessful()) {
-                    getLoader().hide();
+                    view.hideLoader();
                     view.onSuccess(response.body());
                 }
             }
 
             @Override public void onFailure(@NonNull Call<MovieTrailerRepository> call, @NonNull Throwable t) {
-                getLoader().hide();
+                view.hideLoader();
                 view.onError(t.getMessage());
             }
         });

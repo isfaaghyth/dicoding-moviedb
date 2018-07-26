@@ -24,7 +24,7 @@ import butterknife.BindView;
  * github: @isfaaghyth
  */
 
-public class DetailMovieActivity extends BaseActivity implements DetailMovieView<MovieTrailerRepository> {
+public class DetailMovieActivity extends BaseActivity implements DetailMovieView {
 
     @BindView(R.id.img_banner) ImageView imgBanner;
     @BindView(R.id.img_poster) ImageView imgPoster;
@@ -46,7 +46,7 @@ public class DetailMovieActivity extends BaseActivity implements DetailMovieView
         request = new DetailMoviewRequest(this);
         loadMovieDetail(intentValue("movie"));
 
-        //button callbak
+        //button callback
         onPlayTrailer();
         onShareMovie();
     }
@@ -88,10 +88,6 @@ public class DetailMovieActivity extends BaseActivity implements DetailMovieView
                         movie.getOverview());
             }
         });
-    }
-
-    @Override public Context context() {
-        return DetailMovieActivity.this;
     }
 
     @Override public void onSuccess(MovieTrailerRepository result) {

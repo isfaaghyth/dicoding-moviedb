@@ -21,42 +21,41 @@ public class MainRequest extends BaseRequest {
     MainRequest(MainView view) {
         this.view = view;
         initialize();
-        initProgress(view.context());
     }
 
     void popularMovies(String filtering) {
-        getLoader().show();
+        view.showLoader();
         getRequest().getPopularMovies(filtering, BuildConfig.API_KEY)
                 .enqueue(new Callback<MovieRepository>() {
             @Override public void onResponse(@NonNull Call<MovieRepository> call,
                                              @NonNull Response<MovieRepository> response) {
                 if (response.isSuccessful()) {
-                    getLoader().hide();
+                    view.hideLoader();
                     view.onSuccess(response.body());
                 }
             }
 
             @Override public void onFailure(@NonNull Call<MovieRepository> call, @NonNull Throwable t) {
-                getLoader().hide();
+                view.hideLoader();
                 view.onError(t.getMessage());
             }
         });
     }
 
     void searchMovieByKeyword(String keyword) {
-        getLoader().show();
+        view.showLoader();
         getRequest().getMovieByQuery(keyword, BuildConfig.API_KEY)
                 .enqueue(new Callback<MovieRepository>() {
             @Override public void onResponse(@NonNull Call<MovieRepository> call,
                                              @NonNull Response<MovieRepository> response) {
                 if (response.isSuccessful()) {
-                    getLoader().hide();
+                    view.hideLoader();
                     view.onSuccess(response.body());
                 }
             }
 
             @Override public void onFailure(@NonNull Call<MovieRepository> call, @NonNull Throwable t) {
-                getLoader().hide();
+                view.hideLoader();
                 view.onError(t.getMessage());
             }
         });

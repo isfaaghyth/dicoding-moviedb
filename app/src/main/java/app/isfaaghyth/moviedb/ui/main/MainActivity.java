@@ -23,7 +23,7 @@ import butterknife.BindView;
 import de.mateware.snacky.Snacky;
 import io.isfaaghyth.rak.Rak;
 
-public class MainActivity extends BaseActivity implements MainView<MovieRepository>, SwipeRefreshLayout.OnRefreshListener {
+public class MainActivity extends BaseActivity implements MainView, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.lst_movies) RecyclerView lstMovies;
     @BindView(R.id.swipe_refresh_main) SwipeRefreshLayout swipeRefresh;
@@ -97,10 +97,6 @@ public class MainActivity extends BaseActivity implements MainView<MovieReposito
     @Override public void onError(String message) {
         swipeRefresh.setRefreshing(false);
         super.onError(message);
-    }
-
-    @Override public Context context() {
-        return MainActivity.this;
     }
 
     @Override public void onRefresh() {

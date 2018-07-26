@@ -14,21 +14,13 @@ import app.isfaaghyth.moviedb.utils.ProgressLoader;
 public class BaseRequest {
 
     private Routes request;
-    private ProgressLoader loader;
 
     protected void initialize() {
         request = Network.builder().create(Routes.class);
     }
 
-    protected void initProgress(Context context) {
-        loader = new ProgressLoader(context);
-    }
-
-    public Routes getRequest() {
+    protected Routes getRequest() {
         return request;
     }
 
-    public ProgressLoader getLoader() {
-        return loader;
-    }
 }
