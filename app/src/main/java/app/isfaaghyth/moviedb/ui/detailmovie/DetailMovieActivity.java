@@ -42,7 +42,7 @@ public class DetailMovieActivity extends BaseActivity implements DetailMovieView
     }
 
     @Override public void onCreated() {
-        showBackBar();
+        super.showBackBar();
         request = new DetailMoviewRequest(this);
         loadMovieDetail(intentValue("movie"));
 
@@ -58,10 +58,12 @@ public class DetailMovieActivity extends BaseActivity implements DetailMovieView
             getSupportActionBar().setTitle(movie.getTitle());
 
         Glide.with(this)
-                .load(Consts.loadMovieBanner(movie.getBackdrop_path()))
+                .load(Consts.loadMovieBanner(
+                        movie.getBackdrop_path()))
                 .into(imgBanner);
         Glide.with(this)
-                .load(Consts.loadMovieBanner(movie.getPoster_path()))
+                .load(Consts.loadMovieBanner(
+                        movie.getPoster_path()))
                 .into(imgPoster);
 
         txtMovieName.setText(movie.getTitle());

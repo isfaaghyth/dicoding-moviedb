@@ -30,6 +30,8 @@ public class SearchActivity extends BaseActivity implements SearchView {
     }
 
     @Override public void onCreated() {
+        super.showBackBar();
+
         String searchIntent = getIntent().getStringExtra("keyword");
 
         if (getSupportActionBar() != null)

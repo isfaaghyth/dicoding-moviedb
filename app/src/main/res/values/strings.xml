@@ -13,8 +13,8 @@
     <string name="share_movie">Share Movie</string>
     <string name="search">Search</string>
     <string name="change_language">Change Language</string>
-    <string name="information">Informasi</string>
-    <string name="locale_message">&lt;b>\@movie.ghyth&lt;/b> only supported of two languages, namely English and Indonesia.</string>
-    <string name="movie_not_found">Tidak ada film.</string>
+    <string name="information">Information</string>
+    <string name="locale_message">&lt;b>\@movie.ghyth&lt;/b> only supported of three languages, namely Indonesia, English, and Chinese.</string>
+    <string name="movie_not_found">Not Found.</string>
 
 </resources>

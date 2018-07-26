@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">\@movie.ghyth</string>
+    <string name="card_title">Nama Film</string>
+
+    <string name="popular">Populer</string>
+    <string name="upcoming">Akan Datang</string>
+    <string name="now_playing">Tayang Saat Ini</string>
+    <string name="card_content">Konteng</string>
+    <string name="waiting">Silahkan Tunggu…</string>
+    <string name="rating">Penilaian</string>
+    <string name="voter">Pemilih</string>
+    <string name="play_trailer">Mainkan Cuplikan</string>
+    <string name="share_movie">Bagikan Film</string>
+    <string name="search">Cari</string>
+    <string name="change_language">Ganti Bahasa</string>
+    <string name="information">Informasi</string>
+    <string name="locale_message">&lt;b>\@movie.ghyth&lt;/b> hanya support 3 bahasa, yaitu Indonesia, Inggris, dan China.</string>
+    <string name="movie_not_found">Tidak ada.</string>
+
+</resources>

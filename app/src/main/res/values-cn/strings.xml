@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">\@movie.ghyth</string>
+    <string name="card_title">電影名稱</string>
+
+    <string name="popular">流行</string>
+    <string name="upcoming">即將到來</string>
+    <string name="now_playing">正在上映</string>
+    <string name="card_content">內容</string>
+    <string name="waiting">請稍候…</string>
+    <string name="rating">評分</string>
+    <string name="voter">選民</string>
+    <string name="play_trailer">播放預告片</string>
+    <string name="share_movie">分享電影</string>
+    <string name="search">搜索</string>
+    <string name="change_language">改變語言</string>
+    <string name="information">信息</string>
+    <string name="locale_message">&lt;b>\@movie.ghyth&lt;/b> 僅支持三種語言，即印度尼西亞語，英語和中文。</string>
+    <string name="movie_not_found">未找到</string>
+
+</resources>
