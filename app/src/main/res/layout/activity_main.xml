@@ -15,7 +15,7 @@
         app:tabTextColor="@android:color/white"
         app:tabSelectedTextColor="@color/colorAccent"
         android:layout_height="?attr/actionBarSize"
-        app:tabMode="scrollable"/>
+        app:tabMode="fixed"/>
 
     <app.isfaaghyth.moviedb.utils.CustomViewPager
         android:id="@+id/vp_main"

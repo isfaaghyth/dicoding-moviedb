@@ -19,18 +19,13 @@ public class MainActivity extends BaseActivity implements MainView {
     @BindView(R.id.tab_main) TabLayout tabMain;
 
     private ViewPagerAdapter adapter;
-    private MainRequest request;
 
     @Override public int contentView() {
         return R.layout.activity_main;
     }
 
     @Override public void onCreated() {
-        request = new MainRequest(this);
-
-        adapter = new ViewPagerAdapter(
-                getSupportFragmentManager(),
-                false);
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerMain.setPagingEnabled(false);
         viewPagerMain.setOffscreenPageLimit(4);
         setupViewPager(viewPagerMain);
@@ -57,7 +52,7 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     void setupViewPager(ViewPager viewPager) {
-        adapter.addFragment(new PopularFragment(), "Popular");
+        adapter.addFragment(new PopularFragment(), getString(R.string.popular));
         viewPager.setAdapter(adapter);
     }
 

@@ -30,10 +30,9 @@ public abstract class BaseFragment extends Fragment implements BaseView {
 
     @Override public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        loader = new ProgressLoader(getContext());
         ButterKnife.bind(this, view);
         onCreated(view);
-
-        loader = new ProgressLoader(getContext());
     }
 
     @Override public void showLoader() {

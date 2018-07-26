@@ -17,11 +17,8 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     private final List<Fragment> mFragmentList = new ArrayList<>();
     private final List<String> mFragmentTitleList = new ArrayList<>();
 
-    private boolean isTitle;
-
-    public ViewPagerAdapter(FragmentManager fm, boolean isTitle) {
+    public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
-        this.isTitle = isTitle;
     }
 
     @Override public Fragment getItem(int position) {
@@ -38,10 +35,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     }
 
     @Override public CharSequence getPageTitle(int position) {
-        if (isTitle) {
-            return mFragmentTitleList.get(position);
-        } else {
-            return null;
-        }
+        return mFragmentTitleList.get(position);
     }
 }
