@@ -15,11 +15,9 @@ public class Movie {
     private int vote_count;
     private String title;
     private String poster_path;
-    private List<Integer> genre_ids;
     private String backdrop_path;
     private String overview;
     private String release_date;
-    private float popularity;
 
     public int getId() {
         return id;
@@ -33,20 +31,12 @@ public class Movie {
         return vote_count;
     }
 
-    public float getPopularity() {
-        return popularity;
-    }
-
     public String getTitle() {
         return title;
     }
 
     public String getPoster_path() {
         return poster_path;
-    }
-
-    public List<Integer> getGenre_ids() {
-        return genre_ids;
     }
 
     public String getBackdrop_path() {
