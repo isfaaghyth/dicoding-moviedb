@@ -25,11 +25,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
     @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loader = new ProgressLoader(this);
         setContentView(contentView());
         ButterKnife.bind(this);
         onCreated();
-
-        loader = new ProgressLoader(this);
     }
 
     @Override protected void attachBaseContext(Context newBase) {
