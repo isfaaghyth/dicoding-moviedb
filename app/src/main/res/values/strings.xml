@@ -6,6 +6,11 @@
     <string name="upcoming">Upcoming</string>
     <string name="now_showing">Now Showing</string>
     <string name="card_content">Content</string>
-    <string name="waiting">Please Wait...</string>
+    <string name="waiting">Please Wait…</string>
+    <string name="rating">Rating</string>
+    <string name="voter">Voter</string>
+    <string name="play_trailer">Play Trailer</string>
+    <string name="share_movie">Share Movie</string>
+    <string name="search">Search</string>
 
 </resources>

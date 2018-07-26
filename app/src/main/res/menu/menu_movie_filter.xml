@@ -5,10 +5,9 @@
     <item
         android:id="@+id/mn_search"
         android:icon="@mipmap/ic_search"
-        android:titleCondensed="Search All Movies..."
         app:showAsAction="always"
         app:actionViewClass="android.support.v7.widget.SearchView"
-        android:title="Search"/>
+        android:title="@string/search"/>
 
     <item
         android:id="@+id/mn_popular"

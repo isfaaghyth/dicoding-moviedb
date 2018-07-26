@@ -118,7 +118,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
-                            android:text="Ratings"
+                            android:text="@string/rating"
                             android:textSize="12sp"/>
 
                         <TextView
@@ -148,7 +148,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Voter"
+                            android:text="@string/voter"
                             android:textSize="12sp"/>
 
                         <TextView
@@ -204,7 +204,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
-                            android:text="Play Trailer"
+                            android:text="@string/play_trailer"
                             android:textSize="12sp"/>
 
                     </LinearLayout>
@@ -230,7 +230,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
-                            android:text="Share Movie"
+                            android:text="@string/share_movie"
                             android:textSize="12sp"/>
 
                     </LinearLayout>
