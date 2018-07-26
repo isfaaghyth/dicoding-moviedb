@@ -15,11 +15,11 @@ import retrofit2.Response;
  * github: @isfaaghyth
  */
 
-public class PopularRequest extends BaseRequest {
+class PopularRequest extends BaseRequest {
 
-    PopularView view;
+    private PopularView view;
 
-    public PopularRequest(PopularView view) {
+    PopularRequest(PopularView view) {
         this.view = view;
         initialize();
     }

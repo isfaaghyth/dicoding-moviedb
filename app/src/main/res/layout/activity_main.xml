@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/black"
+    android:orientation="vertical"
     tools:context="app.isfaaghyth.moviedb.ui.main.MainActivity">
 
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_main"
+        android:layout_width="match_parent"
+        app:tabTextColor="@android:color/white"
+        app:tabSelectedTextColor="@color/colorAccent"
+        android:layout_height="?attr/actionBarSize"
+        app:tabMode="scrollable"/>
+
     <app.isfaaghyth.moviedb.utils.CustomViewPager
+        android:id="@+id/vp_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-</RelativeLayout>
+</LinearLayout>

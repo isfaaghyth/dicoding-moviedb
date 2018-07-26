@@ -1,4 +1,4 @@
-package app.isfaaghyth.moviedb.ui.main;
+package app.isfaaghyth.moviedb.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -32,9 +32,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         return mFragmentList.size();
     }
 
-    public void addFragment(Fragment fragment) {
+    public void addFragment(Fragment fragment, String title) {
         mFragmentList.add(fragment);
-        mFragmentTitleList.add("");
+        mFragmentTitleList.add(title);
     }
 
     @Override public CharSequence getPageTitle(int position) {
