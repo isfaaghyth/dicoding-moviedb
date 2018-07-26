@@ -33,19 +33,29 @@ public class NowPlayingFragment extends BaseFragment implements NowPlayingView {
     }
 
     @Override public void onCreated(View view) {
-        new NowPlayingRequest(this).nowPlaying();
+        final NowPlayingRequest request = new NowPlayingRequest(this);
+        request.nowPlaying();
+
         lstNowPlaying.setLayoutManager(new GridLayoutManager(getContext(), 2));
         adapter = new MovieAdapter(movies);
         lstNowPlaying.setAdapter(adapter);
+
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override public void onRefresh() {
+                request.nowPlaying();
+            }
+        });
     }
 
     @Override public void onSuccess(MovieRepository result) {
+        swipeRefresh.setRefreshing(true);
         movies.clear();
         movies.addAll(result.getResults());
         adapter.notifyDataSetChanged();
     }
 
     @Override public void onError(String message) {
+        swipeRefresh.setRefreshing(false);
         super.onError(message);
     }
 }

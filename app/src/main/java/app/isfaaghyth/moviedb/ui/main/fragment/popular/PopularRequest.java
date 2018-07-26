@@ -2,6 +2,8 @@ package app.isfaaghyth.moviedb.ui.main.fragment.popular;
 
 import android.support.annotation.NonNull;
 
+import java.util.Locale;
+
 import app.isfaaghyth.moviedb.BuildConfig;
 import app.isfaaghyth.moviedb.base.BaseRequest;
 import app.isfaaghyth.moviedb.data.MovieRepository;
@@ -26,7 +28,8 @@ class PopularRequest extends BaseRequest {
 
     void popular() {
         view.showLoader();
-        getRequest().getMovies(Consts.POPULAR, BuildConfig.API_KEY).enqueue(new Callback<MovieRepository>() {
+        getRequest().getMovies(Consts.POPULAR,
+                Locale.getDefault().toString(), BuildConfig.API_KEY).enqueue(new Callback<MovieRepository>() {
             @Override public void onResponse(@NonNull Call<MovieRepository> call, @NonNull Response<MovieRepository> response) {
                 view.hideLoader();
                 if (response.isSuccessful()) {

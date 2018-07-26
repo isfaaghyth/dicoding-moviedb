@@ -17,6 +17,7 @@ public interface Routes {
     @GET("movie/{filtering}")
     Call<MovieRepository> getMovies(
             @Path("filtering") String filtering,
+            @Query("language") String language,
             @Query("api_key") String apiKey);
 
     @GET("movie/{movie_id}/videos")
@@ -27,6 +28,7 @@ public interface Routes {
     @GET("search/movie")
     Call<MovieRepository> getMovieByQuery(
             @Query("query") String keyword,
+            @Query("language") String language,
             @Query("api_key") String apiKey);
 
 }

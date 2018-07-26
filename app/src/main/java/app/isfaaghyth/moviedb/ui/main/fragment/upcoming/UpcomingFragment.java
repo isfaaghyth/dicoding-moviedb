@@ -34,19 +34,28 @@ public class UpcomingFragment extends BaseFragment implements UpcomingView {
     }
 
     @Override public void onCreated(View view) {
-        new UpcomingRequest(this).upcoming();
+        final UpcomingRequest request = new UpcomingRequest(this);
+        request.upcoming();
         lstUpcoming.setLayoutManager(new GridLayoutManager(getContext(), 2));
         adapter = new MovieAdapter(movies);
         lstUpcoming.setAdapter(adapter);
+
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override public void onRefresh() {
+                request.upcoming();
+            }
+        });
     }
 
     @Override public void onSuccess(MovieRepository result) {
+        swipeRefresh.setRefreshing(true);
         movies.clear();
         movies.addAll(result.getResults());
         adapter.notifyDataSetChanged();
     }
 
     @Override public void onError(String message) {
+        swipeRefresh.setRefreshing(false);
         super.onError(message);
     }
 
