@@ -15,7 +15,7 @@ import retrofit2.Response;
  * github: @isfaaghyth
  */
 
-public class UpcomingRequest extends BaseRequest {
+class UpcomingRequest extends BaseRequest {
 
     private UpcomingView view;
 

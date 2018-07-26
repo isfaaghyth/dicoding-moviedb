@@ -10,6 +10,6 @@ import app.isfaaghyth.moviedb.data.MovieRepository;
  * github: @isfaaghyth
  */
 
-public interface MainView extends BaseView {
+interface MainView extends BaseView {
 
 }

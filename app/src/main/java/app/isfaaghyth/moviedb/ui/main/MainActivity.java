@@ -1,17 +1,22 @@
 package app.isfaaghyth.moviedb.ui.main;
 
+import android.content.Intent;
+import android.provider.Settings;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import app.isfaaghyth.moviedb.R;
 import app.isfaaghyth.moviedb.adapter.ViewPagerAdapter;
 import app.isfaaghyth.moviedb.base.BaseActivity;
+import app.isfaaghyth.moviedb.ui.main.dialog.LocaleDialog;
 import app.isfaaghyth.moviedb.ui.main.fragment.nowplaying.NowPlayingFragment;
 import app.isfaaghyth.moviedb.ui.main.fragment.popular.PopularFragment;
 import app.isfaaghyth.moviedb.ui.main.fragment.upcoming.UpcomingFragment;
+import app.isfaaghyth.moviedb.ui.searchmovie.SearchActivity;
 import app.isfaaghyth.moviedb.utils.CustomViewPager;
 import butterknife.BindView;
 
@@ -41,7 +46,9 @@ public class MainActivity extends BaseActivity implements MainView {
         SearchView searchMovieView = (SearchView) menu.findItem(R.id.mn_search).getActionView();
         searchMovieView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override public boolean onQueryTextSubmit(String query) {
-
+                Intent search = new Intent(MainActivity.this, SearchActivity.class);
+                search.putExtra("keyword", query);
+                startActivity(search);
                 return false;
             }
 
@@ -60,14 +67,19 @@ public class MainActivity extends BaseActivity implements MainView {
         viewPager.setAdapter(adapter);
     }
 
-//    @Override public void onSuccess(MovieRepository result) {
-//        if (result.getResults().size() > 0) {
-//            if (result.getPage() == 1) movies.clear(); //selain page 1 di append
-//            movies.addAll(result.getResults());
-//            adapter.notifyDataSetChanged();
-//        } else {
-//            onInfo("Tidak ada movie.");
-//        }
-//    }
+    @Override public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.mn_localization:
+                LocaleDialog.show(this, new LocaleDialog.AlertListener() {
+                    @Override public void onSubmit() {
+                        String LOCALE_SETTINGS = Settings.ACTION_LOCALE_SETTINGS;
+                        Intent settingsIntent = new Intent(LOCALE_SETTINGS);
+                        startActivity(settingsIntent);
+                    }
+                });
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

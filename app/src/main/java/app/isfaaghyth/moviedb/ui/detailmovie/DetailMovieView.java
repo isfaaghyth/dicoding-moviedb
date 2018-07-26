@@ -8,7 +8,7 @@ import app.isfaaghyth.moviedb.data.MovieTrailerRepository;
  * github: @isfaaghyth
  */
 
-public interface DetailMovieView extends BaseView {
+interface DetailMovieView extends BaseView {
     void onSuccess(MovieTrailerRepository result);
     void onError(String message);
 }

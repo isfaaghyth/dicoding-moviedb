@@ -8,7 +8,7 @@ import app.isfaaghyth.moviedb.data.MovieRepository;
  * github: @isfaaghyth
  */
 
-public interface UpcomingView extends BaseView {
+interface UpcomingView extends BaseView {
     void onSuccess(MovieRepository result);
     void onError(String message);
 }

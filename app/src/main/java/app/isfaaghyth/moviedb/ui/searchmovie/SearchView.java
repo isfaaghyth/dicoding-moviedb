@@ -1,4 +1,4 @@
-package app.isfaaghyth.moviedb.ui.main.fragment.nowplaying;
+package app.isfaaghyth.moviedb.ui.searchmovie;
 
 import app.isfaaghyth.moviedb.base.BaseView;
 import app.isfaaghyth.moviedb.data.MovieRepository;
@@ -8,7 +8,7 @@ import app.isfaaghyth.moviedb.data.MovieRepository;
  * github: @isfaaghyth
  */
 
-interface NowPlayingView extends BaseView {
+interface SearchView extends BaseView {
     void onSuccess(MovieRepository result);
     void onError(String message);
 }

@@ -9,4 +9,8 @@
         app:actionViewClass="android.support.v7.widget.SearchView"
         android:title="@string/search"/>
 
+    <item
+        android:id="@+id/mn_localization"
+        android:title="@string/change_language"/>
+
 </menu>
