@@ -1,5 +1,7 @@
 package app.isfaaghyth.moviedb.ui.main.fragment.upcoming;
 
+import android.view.View;
+
 import app.isfaaghyth.moviedb.R;
 import app.isfaaghyth.moviedb.base.BaseFragment;
 
@@ -14,7 +16,7 @@ public class UpcomingFragment extends BaseFragment implements UpcomingView {
         return R.layout.fragment_upcoming;
     }
 
-    @Override public void onCreated() {
+    @Override public void onCreated(View view) {
 
     }
 

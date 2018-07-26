@@ -11,6 +11,5 @@ import app.isfaaghyth.moviedb.data.MovieRepository;
  */
 
 public interface MainView extends BaseView {
-    void onSuccess(MovieRepository result);
-    void onError(String message);
+
 }

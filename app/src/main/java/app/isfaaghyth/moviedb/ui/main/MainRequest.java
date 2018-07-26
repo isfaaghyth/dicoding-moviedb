@@ -14,7 +14,7 @@ import retrofit2.Response;
  * github: @isfaaghyth
  */
 
-public class MainRequest extends BaseRequest {
+class MainRequest extends BaseRequest {
 
     private MainView view;
 
@@ -23,42 +23,23 @@ public class MainRequest extends BaseRequest {
         initialize();
     }
 
-    void popularMovies(String filtering) {
-        view.showLoader();
-        getRequest().getPopularMovies(filtering, BuildConfig.API_KEY)
-                .enqueue(new Callback<MovieRepository>() {
-            @Override public void onResponse(@NonNull Call<MovieRepository> call,
-                                             @NonNull Response<MovieRepository> response) {
-                if (response.isSuccessful()) {
-                    view.hideLoader();
-                    view.onSuccess(response.body());
-                }
-            }
-
-            @Override public void onFailure(@NonNull Call<MovieRepository> call, @NonNull Throwable t) {
-                view.hideLoader();
-                view.onError(t.getMessage());
-            }
-        });
-    }
-
-    void searchMovieByKeyword(String keyword) {
-        view.showLoader();
-        getRequest().getMovieByQuery(keyword, BuildConfig.API_KEY)
-                .enqueue(new Callback<MovieRepository>() {
-            @Override public void onResponse(@NonNull Call<MovieRepository> call,
-                                             @NonNull Response<MovieRepository> response) {
-                if (response.isSuccessful()) {
-                    view.hideLoader();
-                    view.onSuccess(response.body());
-                }
-            }
-
-            @Override public void onFailure(@NonNull Call<MovieRepository> call, @NonNull Throwable t) {
-                view.hideLoader();
-                view.onError(t.getMessage());
-            }
-        });
-    }
+//    void searchMovieByKeyword(String keyword) {
+//        view.showLoader();
+//        getRequest().getMovieByQuery(keyword, BuildConfig.API_KEY)
+//                .enqueue(new Callback<MovieRepository>() {
+//            @Override public void onResponse(@NonNull Call<MovieRepository> call,
+//                                             @NonNull Response<MovieRepository> response) {
+//                if (response.isSuccessful()) {
+//                    view.hideLoader();
+//                    view.onSuccess(response.body());
+//                }
+//            }
+//
+//            @Override public void onFailure(@NonNull Call<MovieRepository> call, @NonNull Throwable t) {
+//                view.hideLoader();
+//                view.onError(t.getMessage());
+//            }
+//        });
+//    }
 
 }

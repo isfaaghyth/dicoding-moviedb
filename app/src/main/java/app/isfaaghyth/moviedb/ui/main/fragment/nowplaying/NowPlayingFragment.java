@@ -1,5 +1,7 @@
 package app.isfaaghyth.moviedb.ui.main.fragment.nowplaying;
 
+import android.view.View;
+
 import app.isfaaghyth.moviedb.R;
 import app.isfaaghyth.moviedb.base.BaseFragment;
 
@@ -14,7 +16,7 @@ public class NowPlayingFragment extends BaseFragment implements NowPlayingView {
         return R.layout.fragment_now_playing;
     }
 
-    @Override public void onCreated() {
+    @Override public void onCreated(View view) {
     }
 
 }

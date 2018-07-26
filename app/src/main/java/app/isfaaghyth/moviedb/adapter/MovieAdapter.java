@@ -1,6 +1,5 @@
-package app.isfaaghyth.moviedb.ui.main;
+package app.isfaaghyth.moviedb.adapter;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -25,11 +24,11 @@ import app.isfaaghyth.moviedb.utils.Consts;
  * github: @isfaaghyth
  */
 
-public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
+public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MainHolder> {
 
     private List<Movie> movies;
 
-    MainAdapter(List<Movie> movies) {
+    public MovieAdapter(List<Movie> movies) {
         this.movies = movies;
     }
 

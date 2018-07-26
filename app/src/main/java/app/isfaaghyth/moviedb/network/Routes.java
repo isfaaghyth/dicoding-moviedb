@@ -15,7 +15,7 @@ import retrofit2.http.Query;
 public interface Routes {
 
     @GET("movie/{filtering}")
-    Call<MovieRepository> getPopularMovies(
+    Call<MovieRepository> getMovies(
             @Path("filtering") String filtering,
             @Query("api_key") String apiKey);
 

@@ -9,16 +9,4 @@
         app:actionViewClass="android.support.v7.widget.SearchView"
         android:title="@string/search"/>
 
-    <item
-        android:id="@+id/mn_popular"
-        android:title="@string/popular"/>
-
-    <item
-        android:id="@+id/mn_upcoming"
-        android:title="@string/upcoming"/>
-
-    <item
-        android:id="@+id/mn_now_showing"
-        android:title="@string/now_showing"/>
-
 </menu>

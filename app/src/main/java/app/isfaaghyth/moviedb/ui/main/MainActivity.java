@@ -23,14 +23,11 @@ import butterknife.BindView;
 import de.mateware.snacky.Snacky;
 import io.isfaaghyth.rak.Rak;
 
-public class MainActivity extends BaseActivity implements MainView, SwipeRefreshLayout.OnRefreshListener {
+public class MainActivity extends BaseActivity implements MainView {
 
     @BindView(R.id.lst_movies) RecyclerView lstMovies;
-    @BindView(R.id.swipe_refresh_main) SwipeRefreshLayout swipeRefresh;
 
-    private List<Movie> movies = new ArrayList<>();
     private MainRequest request;
-    private MainAdapter adapter;
 
     @Override public int contentView() {
         return R.layout.activity_main;
@@ -38,13 +35,6 @@ public class MainActivity extends BaseActivity implements MainView, SwipeRefresh
 
     @Override public void onCreated() {
         request = new MainRequest(this);
-        request.popularMovies(Consts.POPULAR); //default
-
-        swipeRefresh.setOnRefreshListener(this);
-
-        lstMovies.setLayoutManager(new GridLayoutManager(this, 2));
-        adapter = new MainAdapter(movies);
-        lstMovies.setAdapter(adapter);
     }
 
     @Override public boolean onCreateOptionsMenu(Menu menu) {
@@ -66,41 +56,14 @@ public class MainActivity extends BaseActivity implements MainView, SwipeRefresh
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.mn_popular:
-                request.popularMovies(Consts.POPULAR);
-                break;
-            case R.id.mn_upcoming:
-                request.popularMovies(Consts.UPCOMING);
-                break;
-            case R.id.mn_now_showing:
-                request.popularMovies(Consts.NOW_PLAYING);
-                break;
-            default:
-                request.popularMovies(Consts.POPULAR);
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override public void onSuccess(MovieRepository result) {
+//        if (result.getResults().size() > 0) {
+//            if (result.getPage() == 1) movies.clear(); //selain page 1 di append
+//            movies.addAll(result.getResults());
+//            adapter.notifyDataSetChanged();
+//        } else {
+//            onInfo("Tidak ada movie.");
+//        }
+//    }
 
-    @Override public void onSuccess(MovieRepository result) {
-        if (result.getResults().size() > 0) {
-            if (result.getPage() == 1) movies.clear(); //selain page 1 di append
-            swipeRefresh.setRefreshing(false);
-            movies.addAll(result.getResults());
-            adapter.notifyDataSetChanged();
-        } else {
-            onInfo("Tidak ada movie.");
-        }
-    }
-
-    @Override public void onError(String message) {
-        swipeRefresh.setRefreshing(false);
-        super.onError(message);
-    }
-
-    @Override public void onRefresh() {
-        request.popularMovies(Consts.POPULAR);
-        swipeRefresh.setRefreshing(true);
-    }
 }
