@@ -13,6 +13,7 @@ import app.isfaaghyth.moviedb.adapter.MovieAdapter;
 import app.isfaaghyth.moviedb.base.BaseFragment;
 import app.isfaaghyth.moviedb.data.Movie;
 import app.isfaaghyth.moviedb.data.MovieRepository;
+import app.isfaaghyth.moviedb.utils.GridLayoutHelper;
 import butterknife.BindView;
 
 /**
@@ -35,8 +36,8 @@ public class NowPlayingFragment extends BaseFragment implements NowPlayingView {
     @Override public void onCreated(View view) {
         final NowPlayingRequest request = new NowPlayingRequest(this);
         request.nowPlaying();
-
-        lstNowPlaying.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        lstNowPlaying.setLayoutManager(new GridLayoutManager(
+                getContext(), GridLayoutHelper.calc(getContext())));
         adapter = new MovieAdapter(movies);
         lstNowPlaying.setAdapter(adapter);
 

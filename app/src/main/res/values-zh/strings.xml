@@ -16,5 +16,5 @@
     <string name="information">信息</string>
     <string name="locale_message">&lt;b>\@movie.ghyth&lt;/b> 僅支持三種語言，即印度尼西亞語，英語和中文。</string>
     <string name="movie_not_found">未找到</string>
-
+    <string name="other_movies">其他電影</string>
 </resources>

@@ -13,6 +13,7 @@ import app.isfaaghyth.moviedb.adapter.MovieAdapter;
 import app.isfaaghyth.moviedb.base.BaseFragment;
 import app.isfaaghyth.moviedb.data.Movie;
 import app.isfaaghyth.moviedb.data.MovieRepository;
+import app.isfaaghyth.moviedb.utils.GridLayoutHelper;
 import butterknife.BindView;
 
 /**
@@ -35,7 +36,8 @@ public class UpcomingFragment extends BaseFragment implements UpcomingView {
     @Override public void onCreated(View view) {
         final UpcomingRequest request = new UpcomingRequest(this);
         request.upcoming();
-        lstUpcoming.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        lstUpcoming.setLayoutManager(new GridLayoutManager(
+                getContext(), GridLayoutHelper.calc(getContext())));
         adapter = new MovieAdapter(movies);
         lstUpcoming.setAdapter(adapter);
 

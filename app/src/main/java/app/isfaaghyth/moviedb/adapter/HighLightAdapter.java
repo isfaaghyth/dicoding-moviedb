@@ -1,12 +1,15 @@
 package app.isfaaghyth.moviedb.adapter;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -20,23 +23,30 @@ import app.isfaaghyth.moviedb.ui.detailmovie.DetailMovieActivity;
 import app.isfaaghyth.moviedb.utils.Consts;
 
 /**
- * Created by isfaaghyth on 7/25/18.
+ * Created by isfaaghyth on 7/27/18.
  * github: @isfaaghyth
  */
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieHolder> {
+public class HighLightAdapter extends RecyclerView.Adapter<HighLightAdapter.HighLightHolder> {
 
     private List<Movie> movies;
 
-    public MovieAdapter(List<Movie> movies) {
+    public HighLightAdapter(List<Movie> movies) {
         this.movies = movies;
     }
 
-    @Override public MovieHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new MovieHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_movie, parent, false));
+    @Override public HighLightHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View card = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_highlight, parent, false);
+        RelativeLayout cardRoot = card.findViewById(R.id.card_root);
+        DisplayMetrics displayMetrics = Resources.getSystem().getDisplayMetrics();
+        int width = displayMetrics.widthPixels;
+        ViewGroup.LayoutParams params = cardRoot.getLayoutParams();
+        params.width = ((width * 90) / 100);
+        cardRoot.setLayoutParams(params);
+        return new HighLightHolder(card);
     }
 
-    @Override public void onBindViewHolder(MovieHolder holder, final int position) {
+    @Override public void onBindViewHolder(HighLightHolder holder, final int position) {
         holder.setData(movies.get(position));
     }
 
@@ -44,13 +54,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieHolder>
         return movies.size();
     }
 
-    class MovieHolder extends RecyclerView.ViewHolder {
+    class HighLightHolder extends RecyclerView.ViewHolder {
 
         private CardView cardMovie;
         private ImageView imgPoster;
         private TextView txtMovieName, txtYear;
 
-        MovieHolder(View itemView) {
+        HighLightHolder(View itemView) {
             super(itemView);
             cardMovie = itemView.findViewById(R.id.card_movie);
             imgPoster = itemView.findViewById(R.id.img_poster);
@@ -60,7 +70,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieHolder>
 
         void setData(final Movie movie) {
             Glide.with(imgPoster.getContext())
-                    .load(Consts.loadMovieBanner(movie.getPoster_path()))
+                    .load(Consts.loadMovieBanner(movie.getBackdrop_path()))
                     .apply(new RequestOptions()
                             .placeholder(R.drawable.img_placeholder)
                             .centerCrop())
