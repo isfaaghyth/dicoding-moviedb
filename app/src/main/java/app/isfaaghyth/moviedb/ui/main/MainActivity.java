@@ -60,13 +60,6 @@ public class MainActivity extends BaseActivity implements MainView {
         return super.onCreateOptionsMenu(menu);
     }
 
-    void setupViewPager(ViewPager viewPager) {
-        adapter.addFragment(new PopularFragment(), getString(R.string.popular));
-        adapter.addFragment(new NowPlayingFragment(), getString(R.string.now_playing));
-        adapter.addFragment(new UpcomingFragment(), getString(R.string.upcoming));
-        viewPager.setAdapter(adapter);
-    }
-
     @Override public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.mn_localization:
@@ -80,6 +73,13 @@ public class MainActivity extends BaseActivity implements MainView {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    void setupViewPager(ViewPager viewPager) {
+        adapter.addFragment(new PopularFragment(), getString(R.string.popular));
+        adapter.addFragment(new NowPlayingFragment(), getString(R.string.now_playing));
+        adapter.addFragment(new UpcomingFragment(), getString(R.string.upcoming));
+        viewPager.setAdapter(adapter);
     }
 
 }
