@@ -10,7 +10,7 @@ import android.net.Uri;
 public class DatabaseConstruct {
 
     public static final String DB_NAME = "movieghyth";
-    private static final String TABLE_FAVORITES = "favorites";
+    public static final String TABLE_FAVORITES = "favorites";
 
     static final int DB_VERSION = 1;
 
