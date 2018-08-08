@@ -1,4 +1,4 @@
-package app.isfaaghyth.moviedb.data;
+package app.isfaaghyth.moviedb.data.model;
 
 import java.util.List;
 

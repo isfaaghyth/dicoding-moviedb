@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import app.isfaaghyth.moviedb.data.helper.FavoriteManager;
+
 /**
  * Created by isfaaghyth on 8/8/18.
  * github: @isfaaghyth
@@ -15,18 +17,16 @@ import android.support.annotation.Nullable;
 
 public class FavoriteProvider extends ContentProvider {
 
-    private static final int MOVIE = 1;
-    private static final int MOVIE_ID = 2;
-
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+
+    private static final int MOVIE      = 1;
+    private static final int MOVIE_ID   = 2;
 
     private FavoriteManager favoriteManager;
 
     static {
         sUriMatcher.addURI(DatabaseConstruct.CONTENT_AUTHORITY, DatabaseConstruct.TABLE_FAVORITES, MOVIE);
-        sUriMatcher.addURI(DatabaseConstruct.CONTENT_AUTHORITY,
-                DatabaseConstruct.TABLE_FAVORITES + "/#",
-                MOVIE_ID);
+        sUriMatcher.addURI(DatabaseConstruct.CONTENT_AUTHORITY, DatabaseConstruct.TABLE_FAVORITES + "/#", MOVIE_ID);
     }
 
     @Override public boolean onCreate() {
@@ -36,23 +36,10 @@ public class FavoriteProvider extends ContentProvider {
     }
 
     @Nullable @Override public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
-        Cursor cursor;
-        switch(sUriMatcher.match(uri)){
-            case MOVIE:
-                cursor = favoriteManager.queryProvider();
-                break;
-            case MOVIE_ID:
-                cursor = favoriteManager.queryByIdProvider(uri.getLastPathSegment());
-                break;
-            default:
-                cursor = null;
-                break;
-        }
-
-        if (cursor != null){
-            cursor.setNotificationUri(getContext().getContentResolver(), uri);
-        }
-
+        Cursor cursor = (sUriMatcher.match(uri) == MOVIE)
+                ? favoriteManager.queryProvider()
+                : favoriteManager.queryByIdProvider(uri.getLastPathSegment());
+        if (cursor != null) cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
 
@@ -61,56 +48,26 @@ public class FavoriteProvider extends ContentProvider {
     }
 
     @Nullable @Override public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
-        long added;
-
-        switch (sUriMatcher.match(uri)){
-            case MOVIE:
-                added = favoriteManager.insertProvider(values);
-                break;
-            default:
-                added = 0;
-                break;
-        }
-
-        if (added > 0) {
-            getContext().getContentResolver().notifyChange(uri, null);
-        }
+        long added = (sUriMatcher.match(uri) == MOVIE)
+                ? favoriteManager.insertProvider(values)
+                : 0;
+        if (added > 0) getContext().getContentResolver().notifyChange(uri, null);
         return Uri.parse(DatabaseConstruct.CONTENT_URI + "/" + added);
     }
 
     @Override public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-        int deleted;
-        switch (sUriMatcher.match(uri)) {
-            case MOVIE_ID:
-                deleted =  favoriteManager.deleteProvider(uri.getLastPathSegment());
-                break;
-            default:
-                deleted = 0;
-                break;
-        }
-
-        if (deleted > 0) {
-            getContext().getContentResolver().notifyChange(uri, null);
-        }
-
+        int deleted = (sUriMatcher.match(uri) == MOVIE_ID)
+                ? favoriteManager.deleteProvider(uri.getLastPathSegment())
+                : 0;
+        if (deleted > 0) getContext().getContentResolver().notifyChange(uri, null);
         return deleted;
     }
 
     @Override public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
-        int updated;
-        switch (sUriMatcher.match(uri)) {
-            case MOVIE_ID:
-                updated =  favoriteManager.updateProvider(uri.getLastPathSegment(), values);
-                break;
-            default:
-                updated = 0;
-                break;
-        }
-
-        if (updated > 0) {
-            getContext().getContentResolver().notifyChange(uri, null);
-        }
-
+        int updated = (sUriMatcher.match(uri) == MOVIE_ID)
+                ? favoriteManager.updateProvider(uri.getLastPathSegment(), values)
+                : 0;
+        if (updated > 0) getContext().getContentResolver().notifyChange(uri, null);
         return updated;
     }
 }

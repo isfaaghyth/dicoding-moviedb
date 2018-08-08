@@ -1,31 +1,22 @@
 package app.isfaaghyth.moviedb.ui.main.fragment.popular;
 
-import android.content.res.Configuration;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
-import android.util.Log;
 import android.view.View;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import app.isfaaghyth.moviedb.R;
-import app.isfaaghyth.moviedb.adapter.HighLightAdapter;
 import app.isfaaghyth.moviedb.adapter.MovieAdapter;
 import app.isfaaghyth.moviedb.base.BaseFragment;
-import app.isfaaghyth.moviedb.data.Movie;
-import app.isfaaghyth.moviedb.data.MovieRepository;
+import app.isfaaghyth.moviedb.data.model.Movie;
+import app.isfaaghyth.moviedb.data.model.MovieRepository;
 import app.isfaaghyth.moviedb.utils.GridLayoutHelper;
 import app.isfaaghyth.moviedb.utils.StartSnapHelper;
 import butterknife.BindView;
-import io.isfaaghyth.rak.Rak;
 
 /**
  * Created by isfaaghyth on 7/26/18.
@@ -38,8 +29,7 @@ public class PopularFragment extends BaseFragment implements PopularView {
     @BindView(R.id.lst_highlight) RecyclerView lstHighlight;
 
     private List<Movie> movies = new ArrayList<>();
-    private MovieAdapter popularAdapter;
-    private HighLightAdapter highlightAdapter;
+    private MovieAdapter popularAdapter, highlightAdapter;
 
     @Override public int contentView() {
         return R.layout.fragment_popular;
@@ -55,7 +45,7 @@ public class PopularFragment extends BaseFragment implements PopularView {
         lstPopular.setLayoutManager(new GridLayoutManager(
                 getContext(), GridLayoutHelper.calc(getContext())));
         lstPopular.setNestedScrollingEnabled(false);
-        popularAdapter = new MovieAdapter(movies);
+        popularAdapter = new MovieAdapter(false, movies);
         lstPopular.setAdapter(popularAdapter);
     }
 
@@ -68,7 +58,7 @@ public class PopularFragment extends BaseFragment implements PopularView {
                 LinearLayoutManager.HORIZONTAL, false));
         SnapHelper snapHelper = new StartSnapHelper();
         snapHelper.attachToRecyclerView(lstHighlight);
-        highlightAdapter = new HighLightAdapter(highLightMovies);
+        highlightAdapter = new MovieAdapter(true, highLightMovies);
         lstHighlight.setAdapter(highlightAdapter);
     }
 

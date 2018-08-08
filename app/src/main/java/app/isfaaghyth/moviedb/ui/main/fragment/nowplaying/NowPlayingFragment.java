@@ -11,8 +11,8 @@ import java.util.List;
 import app.isfaaghyth.moviedb.R;
 import app.isfaaghyth.moviedb.adapter.MovieAdapter;
 import app.isfaaghyth.moviedb.base.BaseFragment;
-import app.isfaaghyth.moviedb.data.Movie;
-import app.isfaaghyth.moviedb.data.MovieRepository;
+import app.isfaaghyth.moviedb.data.model.Movie;
+import app.isfaaghyth.moviedb.data.model.MovieRepository;
 import app.isfaaghyth.moviedb.utils.GridLayoutHelper;
 import butterknife.BindView;
 

@@ -1,6 +1,5 @@
 package app.isfaaghyth.moviedb.ui.detailmovie;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -18,9 +17,9 @@ import com.google.gson.Gson;
 import app.isfaaghyth.moviedb.BuildConfig;
 import app.isfaaghyth.moviedb.R;
 import app.isfaaghyth.moviedb.base.BaseActivity;
-import app.isfaaghyth.moviedb.data.Movie;
-import app.isfaaghyth.moviedb.data.MovieTrailerRepository;
-import app.isfaaghyth.moviedb.data.local.FavoriteManager;
+import app.isfaaghyth.moviedb.data.helper.FavoriteManager;
+import app.isfaaghyth.moviedb.data.model.Movie;
+import app.isfaaghyth.moviedb.data.model.MovieTrailerRepository;
 import app.isfaaghyth.moviedb.utils.Consts;
 import app.isfaaghyth.moviedb.utils.ShareIntentUtil;
 import butterknife.BindView;
@@ -109,7 +108,6 @@ public class DetailMovieActivity extends BaseActivity implements DetailMovieView
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_favorites, menu);
         this.menu = menu;
-
         int favCount = favoriteManager.queryByIdProvider(
                 String.valueOf(movie.getId())).getCount();
 
@@ -120,7 +118,6 @@ public class DetailMovieActivity extends BaseActivity implements DetailMovieView
             menu.getItem(0).setIcon(R.mipmap.ic_unfav);
             isFavorited = false;
         }
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -139,7 +136,7 @@ public class DetailMovieActivity extends BaseActivity implements DetailMovieView
                     menu.getItem(0).setIcon(R.mipmap.ic_fav);
                     isFavorited = true;
                 } else {
-                    favoriteManager.delete(movie.getId());
+                    favoriteManager.delete(String.valueOf(movie.getId()));
                     onError(getString(R.string.removed));
                     menu.getItem(0).setIcon(R.mipmap.ic_unfav);
                     isFavorited = false;
@@ -168,7 +165,7 @@ public class DetailMovieActivity extends BaseActivity implements DetailMovieView
         });
     }
 
-    @Override public void onSuccess(MovieTrailerRepository result) {
+    @Override public void onSuccessTrailer(MovieTrailerRepository result) {
         String key = result.getResults().get(0).getKey(); //ambil yang paling pertama aja
         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(BuildConfig.YT_URL + key));
         getApplicationContext().startActivity(i);

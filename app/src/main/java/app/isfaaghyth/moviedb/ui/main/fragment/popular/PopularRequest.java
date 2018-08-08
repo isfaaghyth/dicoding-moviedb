@@ -6,7 +6,7 @@ import java.util.Locale;
 
 import app.isfaaghyth.moviedb.BuildConfig;
 import app.isfaaghyth.moviedb.base.BaseRequest;
-import app.isfaaghyth.moviedb.data.MovieRepository;
+import app.isfaaghyth.moviedb.data.model.MovieRepository;
 import app.isfaaghyth.moviedb.utils.Consts;
 import retrofit2.Call;
 import retrofit2.Callback;

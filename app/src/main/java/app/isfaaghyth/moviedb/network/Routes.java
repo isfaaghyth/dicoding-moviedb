@@ -1,7 +1,7 @@
 package app.isfaaghyth.moviedb.network;
 
-import app.isfaaghyth.moviedb.data.MovieRepository;
-import app.isfaaghyth.moviedb.data.MovieTrailerRepository;
+import app.isfaaghyth.moviedb.data.model.MovieRepository;
+import app.isfaaghyth.moviedb.data.model.MovieTrailerRepository;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

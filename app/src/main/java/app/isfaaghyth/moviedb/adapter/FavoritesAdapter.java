@@ -9,26 +9,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-import java.util.List;
-
 import app.isfaaghyth.moviedb.R;
-import app.isfaaghyth.moviedb.data.Movie;
 import app.isfaaghyth.moviedb.data.local.DatabaseConstruct;
 import app.isfaaghyth.moviedb.data.local.FavoritesColumn;
 import app.isfaaghyth.moviedb.ui.detailmovie.DetailMovieActivity;
 import app.isfaaghyth.moviedb.utils.Consts;
 import app.isfaaghyth.moviedb.utils.CursorRecyclerViewAdapter;
 
-import static android.provider.BaseColumns._ID;
-import static app.isfaaghyth.moviedb.data.local.DatabaseConstruct.getColumnInt;
-import static app.isfaaghyth.moviedb.data.local.DatabaseConstruct.getColumnLong;
 import static app.isfaaghyth.moviedb.data.local.DatabaseConstruct.getColumnString;
 /**
  * Created by isfaaghyth on 8/9/18.

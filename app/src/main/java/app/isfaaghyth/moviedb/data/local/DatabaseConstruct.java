@@ -13,7 +13,7 @@ public class DatabaseConstruct {
     public static final String DB_NAME = "movieghyth";
     public static final String TABLE_FAVORITES = "favorites";
 
-    static final int DB_VERSION = 1;
+    public static final int DB_VERSION = 1;
 
     public static final String CONTENT_AUTHORITY = "app.isfaaghyth.moviedb";
 
@@ -21,7 +21,6 @@ public class DatabaseConstruct {
             .authority(CONTENT_AUTHORITY)
             .appendPath(TABLE_FAVORITES)
             .build();
-
 
     public static String createTable() {
         return "CREATE TABLE " + TABLE_FAVORITES + " (" +

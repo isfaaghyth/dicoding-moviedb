@@ -1,8 +1,10 @@
-package app.isfaaghyth.moviedb.data.local;
+package app.isfaaghyth.moviedb.data.helper;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import app.isfaaghyth.moviedb.data.local.DatabaseConstruct;
 
 /**
  * Created by isfaaghyth on 7/30/18.

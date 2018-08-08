@@ -1,4 +1,4 @@
-package app.isfaaghyth.moviedb.data;
+package app.isfaaghyth.moviedb.data.model;
 
 /**
  * Created by isfaaghyth on 7/25/18.

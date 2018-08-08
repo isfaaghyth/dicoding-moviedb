@@ -1,4 +1,4 @@
-package app.isfaaghyth.moviedb.data;
+package app.isfaaghyth.moviedb.data.model;
 
 import android.database.Cursor;
 import android.os.Parcel;
