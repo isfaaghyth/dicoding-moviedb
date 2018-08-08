@@ -39,29 +39,6 @@ public class FavoriteManager {
         databaseHelper.close();
     }
 
-    public List<Movie> query() {
-        List<Movie> movies = new ArrayList<>();
-        Cursor cursor = database.query(DatabaseConstruct.TABLE_FAVORITES,null,null,null,null,null, _ID + " DESC",null);
-        cursor.moveToFirst();
-        if (cursor.getCount() > 0) {
-            do {
-                Movie movie = new Movie();
-                movie.setId(cursor.getInt(cursor.getColumnIndexOrThrow(_ID)));
-                movie.setVote_average(cursor.getFloat(cursor.getColumnIndexOrThrow(FavoritesColumn.getVote_average())));
-                movie.setVote_count(cursor.getInt(cursor.getColumnIndexOrThrow(FavoritesColumn.getVote_count())));
-                movie.setTitle(cursor.getString(cursor.getColumnIndexOrThrow(FavoritesColumn.getTitle())));
-                movie.setPoster_path(cursor.getString(cursor.getColumnIndexOrThrow(FavoritesColumn.getPoster_path())));
-                movie.setBackdrop_path(cursor.getString(cursor.getColumnIndexOrThrow(FavoritesColumn.getBackdrop_path())));
-                movie.setOverview(cursor.getString(cursor.getColumnIndexOrThrow(FavoritesColumn.getOverview())));
-                movie.setRelease_date(cursor.getString(cursor.getColumnIndexOrThrow(FavoritesColumn.getRelease_date())));
-                movies.add(movie);
-                cursor.moveToNext();
-            } while (!cursor.isAfterLast());
-        }
-        cursor.close();
-        return movies;
-    }
-
     public long insert(Movie movie) {
         Log.d("TAG", "masuk");
         return database.insert(DatabaseConstruct.TABLE_FAVORITES, null, movieContentValues(movie));

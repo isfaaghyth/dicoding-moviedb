@@ -18,4 +18,6 @@
     <string name="movie_not_found">Not Found.</string>
     <string name="other_movies">OTHER MOVIES</string>
     <string name="favorites">Favorites</string>
+    <string name="success">Success</string>
+    <string name="removed">Removed</string>
 </resources>

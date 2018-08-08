@@ -85,4 +85,13 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
                 .show();
     }
 
+    protected void onNotify(String message) {
+        Snacky.builder()
+                .setActivity(this)
+                .setText(message)
+                .setDuration(Snacky.LENGTH_SHORT)
+                .success()
+                .show();
+    }
+
 }

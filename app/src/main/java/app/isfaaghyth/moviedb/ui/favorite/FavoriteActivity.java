@@ -44,6 +44,11 @@ public class FavoriteActivity extends BaseActivity implements BaseView, LoaderMa
         getSupportLoaderManager().initLoader(LOADER_ID, null, this);
     }
 
+    @Override protected void onResume() {
+        super.onResume();
+        getSupportLoaderManager().restartLoader(LOADER_ID, null, this);
+    }
+
     @Override protected void onDestroy() {
         super.onDestroy();
         getSupportLoaderManager().destroyLoader(LOADER_ID);
@@ -54,8 +59,12 @@ public class FavoriteActivity extends BaseActivity implements BaseView, LoaderMa
     }
 
     @Override public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        adapter.swapCursor(data);
-        adapter.notifyDataSetChanged();
+        if (data.getCount() > 0) {
+            adapter.swapCursor(data);
+            adapter.notifyDataSetChanged();
+        } else {
+            onInfo(getString(R.string.movie_not_found));
+        }
     }
 
     @Override public void onLoaderReset(Loader<Cursor> loader) {

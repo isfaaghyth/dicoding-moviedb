@@ -39,22 +39,6 @@ public class DatabaseConstruct {
         return "DROP TABLE IF EXISTS " + TABLE_FAVORITES;
     }
 
-//    public static String insert() {
-//        return "INSERT INTO " + TABLE_FAVORITES + " (" +
-//                FavoritesColumn.getVote_average() + "," +
-//                FavoritesColumn.getVote_count() + "," +
-//                FavoritesColumn.getTitle() + "," +
-//                FavoritesColumn.getPoster_path() + "," +
-//                FavoritesColumn.getBackdrop_path() + "," +
-//                FavoritesColumn.getOverview() + "," +
-//                FavoritesColumn.getRelease_date() + ") VALUES (?, ?)";
-//    }
-//
-//    public static String getAll() {
-//        return "SELECT * FROM "+ TABLE_FAVORITES +" ORDER BY " +
-//                FavoritesColumn.getTitle() + " ASC";
-//    }
-
     public static String getColumnString(Cursor cursor, String columnName) {
         return cursor.getString(cursor.getColumnIndex(columnName));
     }

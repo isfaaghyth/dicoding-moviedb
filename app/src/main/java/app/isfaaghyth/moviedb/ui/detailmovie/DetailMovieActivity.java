@@ -135,10 +135,12 @@ public class DetailMovieActivity extends BaseActivity implements DetailMovieView
                     } else {
                         favoriteManager.insert(movie);
                     }
+                    onNotify(getString(R.string.success));
                     menu.getItem(0).setIcon(R.mipmap.ic_fav);
                     isFavorited = true;
                 } else {
                     favoriteManager.delete(movie.getId());
+                    onError(getString(R.string.removed));
                     menu.getItem(0).setIcon(R.mipmap.ic_unfav);
                     isFavorited = false;
                 }

@@ -18,4 +18,6 @@
     <string name="movie_not_found">Tidak ada.</string>
     <string name="other_movies">FILM LAINNYA</string>
     <string name="favorites">Favorit</string>
+    <string name="success">Sukses</string>
+    <string name="removed">Dihapus</string>
 </resources>
