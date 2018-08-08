@@ -39,7 +39,7 @@ public class SearchActivity extends BaseActivity implements SearchView {
 
         new SearchRequest(this).searchMovie(searchIntent);
         lstSearch.setLayoutManager(new GridLayoutManager(this, 2));
-        adapter = new MovieAdapter(movies);
+        adapter = new MovieAdapter(false, movies);
         lstSearch.setAdapter(adapter);
     }
 

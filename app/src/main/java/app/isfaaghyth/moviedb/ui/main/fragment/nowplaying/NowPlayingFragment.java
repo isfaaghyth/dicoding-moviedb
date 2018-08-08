@@ -38,7 +38,7 @@ public class NowPlayingFragment extends BaseFragment implements NowPlayingView {
         request.nowPlaying();
         lstNowPlaying.setLayoutManager(new GridLayoutManager(
                 getContext(), GridLayoutHelper.calc(getContext())));
-        adapter = new MovieAdapter(movies);
+        adapter = new MovieAdapter(false, movies);
         lstNowPlaying.setAdapter(adapter);
 
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

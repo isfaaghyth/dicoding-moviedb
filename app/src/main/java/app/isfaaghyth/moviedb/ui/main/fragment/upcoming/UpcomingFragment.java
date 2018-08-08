@@ -38,7 +38,7 @@ public class UpcomingFragment extends BaseFragment implements UpcomingView {
         request.upcoming();
         lstUpcoming.setLayoutManager(new GridLayoutManager(
                 getContext(), GridLayoutHelper.calc(getContext())));
-        adapter = new MovieAdapter(movies);
+        adapter = new MovieAdapter(false, movies);
         lstUpcoming.setAdapter(adapter);
 
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
