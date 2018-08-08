@@ -5,11 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import app.isfaaghyth.moviedb.data.Movie;
+
+import static android.provider.BaseColumns._ID;
 
 /**
  * Created by isfaaghyth on 8/8/18.
@@ -38,12 +41,12 @@ public class FavoriteManager {
 
     public List<Movie> query() {
         List<Movie> movies = new ArrayList<>();
-        Cursor cursor = database.query(DatabaseConstruct.DB_NAME,null,null,null,null,null, FavoritesColumn._ID + " DESC",null);
+        Cursor cursor = database.query(DatabaseConstruct.TABLE_FAVORITES,null,null,null,null,null, _ID + " DESC",null);
         cursor.moveToFirst();
         if (cursor.getCount() > 0) {
             do {
                 Movie movie = new Movie();
-                movie.setId(cursor.getInt(cursor.getColumnIndexOrThrow(FavoritesColumn._ID)));
+                movie.setId(cursor.getInt(cursor.getColumnIndexOrThrow(_ID)));
                 movie.setVote_average(cursor.getFloat(cursor.getColumnIndexOrThrow(FavoritesColumn.getVote_average())));
                 movie.setVote_count(cursor.getInt(cursor.getColumnIndexOrThrow(FavoritesColumn.getVote_count())));
                 movie.setTitle(cursor.getString(cursor.getColumnIndexOrThrow(FavoritesColumn.getTitle())));
@@ -60,7 +63,13 @@ public class FavoriteManager {
     }
 
     public long insert(Movie movie) {
+        Log.d("TAG", "masuk");
+        return database.insert(DatabaseConstruct.TABLE_FAVORITES, null, movieContentValues(movie));
+    }
+
+    private ContentValues movieContentValues(Movie movie) {
         ContentValues values = new ContentValues();
+        values.put(FavoritesColumn._ID, String.valueOf(movie.getId()));
         values.put(FavoritesColumn.getVote_average(), movie.getVote_average());
         values.put(FavoritesColumn.getVote_count(), movie.getVote_count());
         values.put(FavoritesColumn.getTitle(), movie.getTitle());
@@ -68,16 +77,17 @@ public class FavoriteManager {
         values.put(FavoritesColumn.getBackdrop_path(), movie.getBackdrop_path());
         values.put(FavoritesColumn.getOverview(), movie.getOverview());
         values.put(FavoritesColumn.getRelease_date(), movie.getRelease_date());
-        return database.insert(DatabaseConstruct.DB_NAME, null, values);
+        return values;
     }
 
     public int delete(int id) {
-        return database.delete(DatabaseConstruct.DB_NAME, FavoritesColumn._ID + "='"+id+"'", null);
+        Log.d("TAG", "kehapus");
+        return database.delete(DatabaseConstruct.TABLE_FAVORITES, _ID + "='"+id+"'", null);
     }
 
     public Cursor queryByIdProvider(String id){
-        return database.query(DatabaseConstruct.DB_NAME, null
-                ,FavoritesColumn._ID + " = ?"
+        return database.query(DatabaseConstruct.TABLE_FAVORITES, null
+                , _ID + " = ?"
                 ,new String[]{id}
                 ,null
                 ,null
@@ -86,25 +96,29 @@ public class FavoriteManager {
     }
 
     public Cursor queryProvider(){
-        return database.query(DatabaseConstruct.DB_NAME
+        return database.query(DatabaseConstruct.TABLE_FAVORITES
                 ,null
                 ,null
                 ,null
                 ,null
                 ,null
-                ,FavoritesColumn._ID + " DESC");
+                , _ID + " DESC");
     }
 
     public long insertProvider(ContentValues values){
-        return database.insert(DatabaseConstruct.DB_NAME, null, values);
+        return database.insert(DatabaseConstruct.TABLE_FAVORITES, null, values);
     }
 
-    public int updateProvider(String id,ContentValues values){
-        return database.update(DatabaseConstruct.DB_NAME, values, FavoritesColumn._ID +" = ?",new String[]{id});
+    public int updateProvider(String id, Movie movie){
+        return database.update(DatabaseConstruct.TABLE_FAVORITES, movieContentValues(movie), _ID +" = ?",new String[]{id});
+    }
+
+    public int updateProvider(String id, ContentValues values){
+        return database.update(DatabaseConstruct.TABLE_FAVORITES, values, _ID +" = ?",new String[]{id});
     }
 
     public int deleteProvider(String id){
-        return database.delete(DatabaseConstruct.DB_NAME, FavoritesColumn._ID + " = ?", new String[]{id});
+        return database.delete(DatabaseConstruct.TABLE_FAVORITES, _ID + " = ?", new String[]{id});
     }
 
 }

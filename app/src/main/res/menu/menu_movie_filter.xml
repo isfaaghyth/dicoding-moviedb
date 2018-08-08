@@ -13,4 +13,8 @@
         android:id="@+id/mn_localization"
         android:title="@string/change_language"/>
 
+    <item
+        android:id="@+id/mn_favorites"
+        android:title="@string/favorites"/>
+
 </menu>

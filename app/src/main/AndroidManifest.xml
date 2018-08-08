@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <permission android:name="app.isfaaghyth.moviedb.READ_DATABASE" android:protectionLevel="normal"/>
+    <permission android:name="app.isfaaghyth.moviedb.WRITE_DATABASE" android:protectionLevel="normal"/>
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -30,6 +33,17 @@
         <activity
             android:name=".ui.searchmovie.SearchActivity"
             android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.favorite.FavoriteActivity"
+            android:screenOrientation="portrait"/>
+
+        <provider
+            android:authorities="app.isfaaghyth.moviedb"
+            android:name=".data.local.FavoriteProvider"
+            android:exported="true"
+            android:readPermission="app.isfaaghyth.moviedb.READ_DATABASE"
+            android:writePermission="app.isfaaghyth.moviedb.WRITE_DATABASE"/>
 
     </application>
 

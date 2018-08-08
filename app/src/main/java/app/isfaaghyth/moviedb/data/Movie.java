@@ -1,11 +1,17 @@
 package app.isfaaghyth.moviedb.data;
 
+import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.Gson;
 
-import java.util.List;
+import app.isfaaghyth.moviedb.data.local.FavoritesColumn;
+
+import static android.provider.BaseColumns._ID;
+import static app.isfaaghyth.moviedb.data.local.DatabaseConstruct.getColumnInt;
+import static app.isfaaghyth.moviedb.data.local.DatabaseConstruct.getColumnLong;
+import static app.isfaaghyth.moviedb.data.local.DatabaseConstruct.getColumnString;
 
 /**
  * Created by isfaaghyth on 7/24/18.
@@ -33,6 +39,17 @@ public class Movie implements Parcelable {
         backdrop_path = in.readString();
         overview = in.readString();
         release_date = in.readString();
+    }
+
+    public Movie(Cursor cursor){
+        this.id = getColumnInt(cursor, _ID);
+        this.vote_average = getColumnLong(cursor, FavoritesColumn.getVote_average());
+        this.vote_count = getColumnInt(cursor, FavoritesColumn.getVote_count());
+        this.title = getColumnString(cursor, FavoritesColumn.getTitle());
+        this.poster_path = getColumnString(cursor, FavoritesColumn.getPoster_path());
+        this.backdrop_path = getColumnString(cursor, FavoritesColumn.getBackdrop_path());
+        this.overview = getColumnString(cursor, FavoritesColumn.getOverview());
+        this.release_date = getColumnString(cursor, FavoritesColumn.getRelease_date());
     }
 
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {

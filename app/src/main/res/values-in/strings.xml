@@ -17,4 +17,5 @@
     <string name="locale_message">&lt;b>\@movie.ghyth&lt;/b> hanya support 3 bahasa, yaitu Indonesia, Inggris, dan China.</string>
     <string name="movie_not_found">Tidak ada.</string>
     <string name="other_movies">FILM LAINNYA</string>
+    <string name="favorites">Favorit</string>
 </resources>

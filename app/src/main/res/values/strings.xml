@@ -17,4 +17,5 @@
     <string name="locale_message">&lt;b>\@movie.ghyth&lt;/b> only supported of three languages, namely Indonesia, English, and Chinese.</string>
     <string name="movie_not_found">Not Found.</string>
     <string name="other_movies">OTHER MOVIES</string>
+    <string name="favorites">Favorites</string>
 </resources>

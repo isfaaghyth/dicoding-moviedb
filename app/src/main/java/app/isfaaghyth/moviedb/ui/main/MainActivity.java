@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import app.isfaaghyth.moviedb.R;
 import app.isfaaghyth.moviedb.adapter.ViewPagerAdapter;
 import app.isfaaghyth.moviedb.base.BaseActivity;
+import app.isfaaghyth.moviedb.ui.favorite.FavoriteActivity;
 import app.isfaaghyth.moviedb.ui.main.dialog.LocaleDialog;
 import app.isfaaghyth.moviedb.ui.main.fragment.nowplaying.NowPlayingFragment;
 import app.isfaaghyth.moviedb.ui.main.fragment.popular.PopularFragment;
@@ -70,6 +71,9 @@ public class MainActivity extends BaseActivity implements MainView {
                         startActivity(settingsIntent);
                     }
                 });
+                break;
+            case R.id.mn_favorites:
+                startActivity(new Intent(MainActivity.this, FavoriteActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -15,19 +15,15 @@ import android.support.annotation.Nullable;
 
 public class FavoriteProvider extends ContentProvider {
 
-    private static final int MOVIE = 100;
-    private static final int MOVIE_ID = 101;
+    private static final int MOVIE = 1;
+    private static final int MOVIE_ID = 2;
 
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
     private FavoriteManager favoriteManager;
 
     static {
-
-        // content://com.dicoding.mynotesapp/note
         sUriMatcher.addURI(DatabaseConstruct.CONTENT_AUTHORITY, DatabaseConstruct.TABLE_FAVORITES, MOVIE);
-
-        // content://com.dicoding.mynotesapp/note/id
         sUriMatcher.addURI(DatabaseConstruct.CONTENT_AUTHORITY,
                 DatabaseConstruct.TABLE_FAVORITES + "/#",
                 MOVIE_ID);
@@ -101,6 +97,20 @@ public class FavoriteProvider extends ContentProvider {
     }
 
     @Override public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
-        return 0;
+        int updated;
+        switch (sUriMatcher.match(uri)) {
+            case MOVIE_ID:
+                updated =  favoriteManager.updateProvider(uri.getLastPathSegment(), values);
+                break;
+            default:
+                updated = 0;
+                break;
+        }
+
+        if (updated > 0) {
+            getContext().getContentResolver().notifyChange(uri, null);
+        }
+
+        return updated;
     }
 }
