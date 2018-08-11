@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Favorites</string>
+    <string name="card_title">Movie</string>
 </resources>
