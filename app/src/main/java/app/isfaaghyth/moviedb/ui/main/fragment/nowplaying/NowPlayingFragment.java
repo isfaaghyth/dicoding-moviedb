@@ -1,9 +1,14 @@
 package app.isfaaghyth.moviedb.ui.main.fragment.nowplaying;
 
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,19 +38,32 @@ public class NowPlayingFragment extends BaseFragment implements NowPlayingView {
         return R.layout.fragment_now_playing;
     }
 
-    @Override public void onCreated(View view) {
+    @Override public void onCreated(View view, Bundle savedInstanceState) {
         final NowPlayingRequest request = new NowPlayingRequest(this);
-        request.nowPlaying();
-        lstNowPlaying.setLayoutManager(new GridLayoutManager(
-                getContext(), GridLayoutHelper.calc(getContext())));
-        adapter = new MovieAdapter(false, movies);
-        lstNowPlaying.setAdapter(adapter);
+        if (savedInstanceState != null) {
+            movies = savedInstanceState.getParcelableArrayList("movies");
+        } else {
+            request.nowPlaying();
+        }
 
+        nowPlayingListPrepared();
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override public void onRefresh() {
                 request.nowPlaying();
             }
         });
+    }
+
+    private void nowPlayingListPrepared() {
+        lstNowPlaying.setLayoutManager(new GridLayoutManager(
+                getContext(), GridLayoutHelper.calc(getContext())));
+        adapter = new MovieAdapter(false, movies);
+        lstNowPlaying.setAdapter(adapter);
+    }
+
+    @Override public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("movies", new ArrayList<>(adapter.getMovies()));
     }
 
     @Override public void onSuccess(MovieRepository result) {

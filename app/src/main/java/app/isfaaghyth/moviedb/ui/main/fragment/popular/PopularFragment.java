@@ -1,10 +1,15 @@
 package app.isfaaghyth.moviedb.ui.main.fragment.popular;
 
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
+import android.util.Log;
 import android.view.View;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,10 +40,21 @@ public class PopularFragment extends BaseFragment implements PopularView {
         return R.layout.fragment_popular;
     }
 
-    @Override public void onCreated(View view) {
+    @Override public void onCreated(View view, Bundle savedInstanceState) {
         PopularRequest request = new PopularRequest(this);
-        request.popular();
+        if (savedInstanceState != null) {
+            movies = savedInstanceState.getParcelableArrayList("movies");
+            highlightListPrepared(movies);
+        } else {
+            request.popular();
+        }
+
         popularListPrepared();
+    }
+
+    @Override public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("movies", new ArrayList<>(popularAdapter.getMovies()));
     }
 
     private void popularListPrepared() {

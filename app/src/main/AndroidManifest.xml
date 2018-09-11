@@ -17,8 +17,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ui.main.MainActivity"
-            android:screenOrientation="portrait">
+            android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -27,16 +26,13 @@
         </activity>
 
         <activity
-            android:name=".ui.detailmovie.DetailMovieActivity"
-            android:screenOrientation="portrait"/>
+            android:name=".ui.detailmovie.DetailMovieActivity"/>
 
         <activity
-            android:name=".ui.searchmovie.SearchActivity"
-            android:screenOrientation="portrait"/>
+            android:name=".ui.searchmovie.SearchActivity"/>
 
         <activity
-            android:name=".ui.favorite.FavoriteActivity"
-            android:screenOrientation="portrait"/>
+            android:name=".ui.favorite.FavoriteActivity"/>
 
         <provider
             android:authorities="app.isfaaghyth.moviedb"

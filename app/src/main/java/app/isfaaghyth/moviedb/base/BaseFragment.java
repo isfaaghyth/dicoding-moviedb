@@ -19,7 +19,7 @@ import de.mateware.snacky.Snacky;
 
 public abstract class BaseFragment extends Fragment implements BaseView {
 
-    public abstract void onCreated(View view);
+    public abstract void onCreated(View view, Bundle savedInstanceState);
     public abstract int contentView();
 
     private ProgressLoader loader;
@@ -32,7 +32,7 @@ public abstract class BaseFragment extends Fragment implements BaseView {
         super.onViewCreated(view, savedInstanceState);
         loader = new ProgressLoader(getContext());
         ButterKnife.bind(this, view);
-        onCreated(view);
+        onCreated(view, savedInstanceState);
     }
 
     @Override public void showLoader() {

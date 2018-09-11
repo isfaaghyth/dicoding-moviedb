@@ -56,6 +56,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieHolder>
         holder.setData(movies.get(position));
     }
 
+    public List<Movie> getMovies() {
+        return movies;
+    }
+
     @Override public int getItemCount() {
         return movies.size();
     }
