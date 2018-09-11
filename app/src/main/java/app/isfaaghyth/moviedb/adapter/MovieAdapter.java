@@ -86,7 +86,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieHolder>
                             .centerCrop())
                     .into(imgPoster);
             txtMovieName.setText(movie.getTitle());
-            txtYear.setText(movie.getRelease_date().split("-")[0]);
+            txtYear.setText(!movie.getRelease_date().isEmpty()
+                    ? movie.getRelease_date().split("-")[0]
+                    : "unknown");
 
             cardMovie.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
