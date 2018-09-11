@@ -18,6 +18,7 @@ import app.isfaaghyth.moviedb.ui.main.fragment.nowplaying.NowPlayingFragment;
 import app.isfaaghyth.moviedb.ui.main.fragment.popular.PopularFragment;
 import app.isfaaghyth.moviedb.ui.main.fragment.upcoming.UpcomingFragment;
 import app.isfaaghyth.moviedb.ui.searchmovie.SearchActivity;
+import app.isfaaghyth.moviedb.ui.settings.SettingActivity;
 import app.isfaaghyth.moviedb.utils.CustomViewPager;
 import butterknife.BindView;
 
@@ -63,14 +64,8 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.mn_localization:
-                LocaleDialog.show(this, new LocaleDialog.AlertListener() {
-                    @Override public void onSubmit() {
-                        String LOCALE_SETTINGS = Settings.ACTION_LOCALE_SETTINGS;
-                        Intent settingsIntent = new Intent(LOCALE_SETTINGS);
-                        startActivity(settingsIntent);
-                    }
-                });
+            case R.id.mn_settings:
+                startActivity(new Intent(this, SettingActivity.class));
                 break;
             case R.id.mn_favorites:
                 startActivity(new Intent(MainActivity.this, FavoriteActivity.class));

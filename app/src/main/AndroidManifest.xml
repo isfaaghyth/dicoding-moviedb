@@ -3,9 +3,15 @@
           package="app.isfaaghyth.moviedb">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
-    <permission android:name="app.isfaaghyth.moviedb.READ_DATABASE" android:protectionLevel="normal"/>
-    <permission android:name="app.isfaaghyth.moviedb.WRITE_DATABASE" android:protectionLevel="normal"/>
+    <permission
+        android:name="app.isfaaghyth.moviedb.READ_DATABASE"
+        android:protectionLevel="normal"/>
+    <permission
+        android:name="app.isfaaghyth.moviedb.WRITE_DATABASE"
+        android:protectionLevel="normal"/>
 
     <application
         android:name=".App"
@@ -15,9 +21,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity
-            android:name=".ui.main.MainActivity">
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -25,21 +29,45 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".ui.detailmovie.DetailMovieActivity"/>
+        <activity android:name=".ui.detailmovie.DetailMovieActivity"/>
+        <activity android:name=".ui.searchmovie.SearchActivity"/>
+        <activity android:name=".ui.favorite.FavoriteActivity"/>
 
         <activity
-            android:name=".ui.searchmovie.SearchActivity"/>
-
-        <activity
-            android:name=".ui.favorite.FavoriteActivity"/>
+            android:name=".ui.settings.SettingActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".ui.main.MainActivity"/>
 
         <provider
-            android:authorities="app.isfaaghyth.moviedb"
             android:name=".data.local.FavoriteProvider"
+            android:authorities="app.isfaaghyth.moviedb"
             android:exported="true"
             android:readPermission="app.isfaaghyth.moviedb.READ_DATABASE"
             android:writePermission="app.isfaaghyth.moviedb.WRITE_DATABASE"/>
+
+        <receiver android:name=".ui.widget.MovieWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/movie_widget_info"/>
+        </receiver>
+
+        <service
+            android:name=".services.widget.MovieWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"/>
+
+        <receiver
+            android:name=".services.notification.MovieDailyReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver
+            android:name=".services.notification.MovieUpcomingReceiver"
+            android:enabled="true"
+            android:exported="false" />
 
     </application>
 

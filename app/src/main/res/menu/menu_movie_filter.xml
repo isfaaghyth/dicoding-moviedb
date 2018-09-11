@@ -10,8 +10,8 @@
         android:title="@string/search"/>
 
     <item
-        android:id="@+id/mn_localization"
-        android:title="@string/change_language"/>
+        android:id="@+id/mn_settings"
+        android:title="@string/title_activity_settings"/>
 
     <item
         android:id="@+id/mn_favorites"

@@ -15,6 +15,7 @@ android {
         buildConfigField("String", "API_KEY", "\"9351b653885866a95fcef04c4f0c7426\"")
         buildConfigField("String", "IMG_URL", "\"http://image.tmdb.org/t/p/w300/\"")
         buildConfigField("String", "YT_URL", "\"http://youtube.com/watch?v=\"")
+        buildConfigField("String", "NOTIFICATION_ID", "\"2407\"")
     }
     buildTypes {
         release {

@@ -15,9 +15,32 @@
     <string name="change_language">Change Language</string>
     <string name="information">Information</string>
     <string name="locale_message">&lt;b>\@movie.ghyth&lt;/b> only supported of three languages, namely Indonesia, English, and Chinese.</string>
-    <string name="movie_not_found">Not Found.</string>
+    <string name="movie_not_found">Movie not found</string>
     <string name="other_movies">OTHER MOVIES</string>
     <string name="favorites">Favorites</string>
     <string name="success">Success</string>
     <string name="removed">Removed</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="daily_notification">Hei you, Good morning! Let\'s make a cup coffe and watch some movies here.</string>
+    <string name="upcoming_notification">%1s release!, click here to read more.</string>
+
+    <!-- Strings related to Settings -->
+    <string name="key_lang">key_lang</string>
+    <string name="key_today_reminder">key_today_reminder</string>
+    <string name="key_release_reminder">key_release_reminder</string>
+
+    <string name="pref_lang_title">Language</string>
+    <string name="pref_summary_lang">Choose Language</string>
+    <string name="pref_lang">English</string>
+    <string name="pref_title_notifications">Notification</string>
+
+    <string name="pref_daily_reminder">Daily Reminder</string>
+    <string name="pref_summary_daily_reminder">You will received daily reminder every 8 AM</string>
+
+    <string name="pref_summary_release_reminder">You will received daily new movie release info every 7 AM</string>
+    <string name="pref_release_reminder">New Release Reminder</string>
+
 </resources>

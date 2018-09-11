@@ -41,6 +41,12 @@ public class Movie implements Parcelable {
         release_date = in.readString();
     }
 
+    public Movie(int id, String title, String backdrop_path) {
+        this.id = id;
+        this.title = title;
+        this.backdrop_path = backdrop_path;
+    }
+
     public Movie(Cursor cursor){
         this.id = getColumnInt(cursor, _ID);
         this.vote_average = getColumnLong(cursor, FavoritesColumn.getVote_average());

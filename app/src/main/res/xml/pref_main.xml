@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <PreferenceCategory android:title="@string/change_language">
+
+        <Preference
+            android:summary="@string/pref_summary_lang"
+            android:title="@string/pref_lang"
+            android:key="@string/key_lang">
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_title_notifications">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/key_today_reminder"
+            android:summary="@string/pref_summary_daily_reminder"
+            android:title="@string/pref_daily_reminder"/>
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/key_release_reminder"
+            android:summary="@string/pref_summary_release_reminder"
+            android:title="@string/pref_release_reminder"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

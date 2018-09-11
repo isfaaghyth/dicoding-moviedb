@@ -15,9 +15,29 @@
     <string name="change_language">Ganti Bahasa</string>
     <string name="information">Informasi</string>
     <string name="locale_message">&lt;b>\@movie.ghyth&lt;/b> hanya support 3 bahasa, yaitu Indonesia, Inggris, dan China.</string>
-    <string name="movie_not_found">Tidak ada.</string>
+    <string name="movie_not_found">Tidak ada movie</string>
     <string name="other_movies">FILM LAINNYA</string>
     <string name="favorites">Favorit</string>
     <string name="success">Sukses</string>
     <string name="removed">Dihapus</string>
+    <string name="title_activity_settings">Pengaturan</string>
+
+    <string name="daily_notification">Hai, selamat pagi! Ayo bikin secangkir teh atau kopi sambil nonton movie disini.</string>
+    <string name="upcoming_notification">%1s rilis!, klik disini untuk melihat selengkapnya.</string>
+
+    <!-- Strings related to Settings -->
+    <string name="key_lang">key_lang</string>
+    <string name="key_today_reminder">key_today_reminder</string>
+    <string name="key_release_reminder">key_release_reminder</string>
+
+    <string name="pref_lang_title">Bahasa</string>
+    <string name="pref_summary_lang">Pilih Bahasa</string>
+    <string name="pref_lang">Bahasa</string>
+    <string name="pref_title_notifications">Notifikasi</string>
+
+    <string name="pref_daily_reminder">Pengingat Harian</string>
+    <string name="pref_summary_daily_reminder">Anda akan menerima notifikasi setiap jam 8 pagi</string>
+
+    <string name="pref_summary_release_reminder">Anda akan menerima notifikasi setiap jam 7 pagi</string>
+    <string name="pref_release_reminder">Pengingat Movie Terbaru</string>
 </resources>

@@ -15,11 +15,11 @@ public class BaseRequest {
 
     private Routes request;
 
-    protected void initialize() {
+    public void initialize() {
         request = Network.builder().create(Routes.class);
     }
 
-    protected Routes getRequest() {
+    public Routes getRequest() {
         return request;
     }
 
