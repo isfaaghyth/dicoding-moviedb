@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">\@movie.ghyth</string>
     <string name="card_title">Nama Film</string>
@@ -5,7 +6,7 @@
     <string name="popular">Populer</string>
     <string name="upcoming">Akan Datang</string>
     <string name="now_playing">Tayang Saat Ini</string>
-    <string name="card_content">Konteng</string>
+    <string name="card_content">Konten</string>
     <string name="waiting">Silahkan Tunggu…</string>
     <string name="rating">Penilaian</string>
     <string name="voter">Pemilih</string>
@@ -40,4 +41,6 @@
 
     <string name="pref_summary_release_reminder">Anda akan menerima notifikasi setiap jam 7 pagi</string>
     <string name="pref_release_reminder">Pengingat Movie Terbaru</string>
+    <string name="add_widget">Tambahkan Widget</string>
+    <string name="appwidget_text">CONTOH</string>
 </resources>
