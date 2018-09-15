@@ -16,7 +16,6 @@ import app.isfaaghyth.moviedb.data.model.Movie;
 import app.isfaaghyth.moviedb.utils.AlarmNotificationUtil;
 import app.isfaaghyth.moviedb.utils.AlarmTimeUtils;
 import app.isfaaghyth.moviedb.utils.NotificationBuilder;
-import app.isfaaghyth.moviedb.ui.detailmovie.DetailMovieActivity;
 
 /**
  * Created by isfaaghyth on 9/12/18.
@@ -41,7 +40,7 @@ public class MovieUpcomingReceiver extends BroadcastReceiver {
         for (Movie movie: movies) {
             cancelUpcomingAlarm(context);
             AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-            Intent intent = new Intent(context, DetailMovieActivity.class);
+            Intent intent = new Intent(context, MovieUpcomingReceiver.class);
             intent.putExtra("movie", new Gson().toJson(movie));
             PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
             AlarmNotificationUtil.set(alarmManager, timeAlarm, notificationDelay, pendingIntent);
